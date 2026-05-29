@@ -3,1188 +3,1218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>차간 치노드 — 코스탄다이의 일지</title>
+<title>에르덴 왕국 — 오웬 백작의 연대기</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-  --steppe: #c4873a;
-  --steppe-light: #e8b86d;
-  --steppe-dark: #7a4e18;
-  --byzantine: #1a3a5c;
-  --byzantine-light: #2e6da4;
-  --blood: #7a1a1a;
-  --blood-light: #c0392b;
-  --felt: #1c1208;
-  --felt-mid: #2e1f0a;
-  --felt-light: #3d2b10;
-  --parchment: #f0e6cc;
+  --stone: #2a2218;
+  --stone-mid: #3d3222;
+  --stone-light: #574838;
+  --parchment: #f2e8d0;
   --parchment-dim: #c8b48a;
-  --snow: #e8eef5;
+  --parchment-dark: #a08c60;
+  --gold: #c9973a;
+  --gold-light: #e8bc6a;
+  --gold-dark: #7a5518;
+  --blood: #8b1a1a;
+  --blood-light: #b83232;
+  --iron: #4a5568;
+  --iron-light: #718096;
+  --forest: #2d5a27;
+  --forest-light: #4a8c42;
   --shadow: rgba(0,0,0,0.7);
-  --glow-steppe: rgba(196,135,58,0.25);
-  --glow-byz: rgba(26,58,92,0.4);
+  --glow: rgba(201,151,58,0.2);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  height: 100%;
-  background: var(--felt);
-  color: var(--parchment);
-  font-family: 'Noto Serif KR', serif;
-  overflow-x: hidden;
-}
-
+html { height: 100%; }
 body {
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(196,135,58,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 60% at 80% 100%, rgba(26,58,92,0.15) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c4873a' fill-opacity='0.025'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30Z'/%3E%3C/g%3E%3C/svg%3E");
+  background: var(--stone);
+  color: var(--parchment);
+  font-family: 'Crimson Text', serif;
   min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(201,151,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 0% 100%, rgba(139,26,26,0.1) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9973a' fill-opacity='0.018'%3E%3Crect x='0' y='0' width='1' height='100'/%3E%3Crect x='50' y='0' width='1' height='100'/%3E%3Crect x='0' y='0' width='100' height='1'/%3E%3Crect x='0' y='50' width='100' height='1'/%3E%3C/g%3E%3C/svg%3E");
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 40px;
 }
 
 /* ── HEADER ── */
 .hdr {
-  width: 100%;
-  max-width: 700px;
-  padding: 20px 18px 10px;
+  width: 100%; max-width: 720px;
+  padding: 18px 18px 10px;
   text-align: center;
-  position: relative;
 }
-.hdr-symbol {
-  font-size: 1.6rem;
-  letter-spacing: 0.3em;
-  color: var(--steppe);
-  opacity: 0.7;
-  display: block;
-  margin-bottom: 6px;
-}
+.hdr-crest { font-size: 1.4rem; color: var(--gold); opacity: 0.6; letter-spacing: 0.3em; display: block; margin-bottom: 4px; }
 .hdr-title {
-  font-family: 'Philosopher', serif;
-  font-size: clamp(1.3rem, 5vw, 2rem);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 5vw, 1.9rem);
   font-weight: 700;
-  color: var(--steppe-light);
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 30px var(--glow-steppe), 0 2px 6px var(--shadow);
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 30px var(--glow), 0 2px 4px var(--shadow);
 }
 .hdr-sub {
-  font-family: 'Philosopher', serif;
-  font-size: 0.75rem;
-  color: var(--steppe-dark);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: var(--gold-dark);
   letter-spacing: 0.25em;
   text-transform: uppercase;
   margin-top: 3px;
-  font-style: italic;
 }
-.hdr-line {
-  width: 180px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--steppe), transparent);
-  margin: 10px auto 0;
-}
+.hdr-line { width: 160px; height: 1px; background: linear-gradient(90deg,transparent,var(--gold),transparent); margin: 10px auto 0; }
 
 /* ── DATE BAR ── */
 .date-bar {
-  width: 100%;
-  max-width: 700px;
-  padding: 8px 18px;
+  width: 100%; max-width: 720px;
+  padding: 6px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.date-txt { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold); }
+.week-txt { font-size: 0.68rem; color: var(--parchment-dark); font-style: italic; }
+
+/* ── TOP GRID ── */
+.top-grid {
+  width: 100%; max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
+  padding: 0 18px 8px;
 }
-.date-label {
-  font-family: 'Philosopher', serif;
-  font-size: 0.8rem;
-  color: var(--steppe);
-  letter-spacing: 0.1em;
-  font-style: italic;
+
+/* ── PANEL ── */
+.panel {
+  background: linear-gradient(160deg, rgba(42,34,24,0.97), rgba(30,24,14,0.98));
+  border: 1px solid rgba(201,151,58,0.18);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,151,58,0.08);
 }
-.date-val {
-  font-size: 0.85rem;
-  color: var(--steppe-light);
-  font-weight: 600;
-}
-.ap-display {
+.panel-hdr {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(201,151,58,0.1);
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   display: flex;
-  gap: 4px;
+  justify-content: space-between;
   align-items: center;
 }
-.ap-label {
-  font-size: 0.65rem;
-  color: var(--steppe-dark);
-  font-family: 'Philosopher', serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-right: 3px;
-}
-.ap-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--steppe);
-  transition: background 0.3s, transform 0.3s;
-  box-shadow: 0 0 6px var(--glow-steppe);
-}
-.ap-dot.used {
-  background: var(--felt-light);
-  box-shadow: none;
-}
+.panel-body { padding: 10px 12px; }
 
 /* ── STATS ── */
-.stats-row {
-  width: 100%;
-  max-width: 700px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  padding: 0 18px 10px;
-}
-.stat-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(196,135,58,0.15);
-  border-radius: 8px;
-  padding: 8px 6px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.stat-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196,135,58,0.4), transparent);
-}
-.stat-icon { font-size: 0.95rem; display: block; margin-bottom: 2px; }
-.stat-name {
-  font-size: 0.55rem;
-  font-family: 'Philosopher', serif;
-  color: var(--steppe-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 3px;
-}
-.stat-num {
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: 'Philosopher', serif;
-  color: var(--steppe-light);
-  display: block;
-}
-.stat-pip-row {
+.stat-row {
   display: flex;
-  justify-content: center;
-  gap: 2px;
-  margin-top: 4px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
 }
-.pip {
-  width: 5px; height: 5px;
-  border-radius: 1px;
-  background: var(--steppe);
-  opacity: 0.8;
-  transition: all 0.4s;
+.stat-row:last-child { margin-bottom: 0; }
+.stat-icon { font-size: 0.85rem; width: 18px; text-align: center; flex-shrink: 0; }
+.stat-name { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--parchment-dark); width: 36px; flex-shrink: 0; }
+.stat-bar-bg { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.stat-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); transition: width 0.5s ease; }
+.stat-num { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold-light); width: 24px; text-align: right; flex-shrink: 0; }
+
+/* ── OUTLOOK (인생관) ── */
+.outlook-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(201,151,58,0.06);
 }
-.pip.empty { background: rgba(196,135,58,0.15); opacity: 1; }
+.outlook-row:last-child { border-bottom: none; }
+.outlook-icon { font-size: 1rem; width: 20px; text-align: center; }
+.outlook-info { flex: 1; }
+.outlook-name { font-family: 'Cinzel', serif; font-size: 0.65rem; color: var(--parchment); display: block; }
+.outlook-stars { display: flex; gap: 2px; margin-top: 2px; }
+.star { font-size: 0.6rem; color: var(--gold); }
+.star.empty { color: rgba(201,151,58,0.2); }
+
+/* ── DOMAIN ── */
+.domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.domain-item { text-align: center; }
+.domain-label { font-family: 'Cinzel', serif; font-size: 0.52rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px; }
+.domain-val { font-size: 1rem; font-family: 'Cinzel', serif; color: var(--gold-light); font-weight: 700; display: block; }
+.domain-bar-bg { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-top: 3px; overflow: hidden; }
+.domain-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+.bar-dev { background: linear-gradient(90deg, var(--forest), var(--forest-light)); }
+.bar-loy { background: linear-gradient(90deg, var(--blood), var(--blood-light)); }
+
+/* ── RESOURCES ── */
+.res-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.res-row:last-child { margin-bottom: 0; }
+.res-label { font-size: 0.65rem; color: var(--parchment-dark); }
+.res-val { font-family: 'Cinzel', serif; font-size: 0.7rem; color: var(--parchment); }
+.res-val.danger { color: var(--blood-light); }
+.res-val.good { color: var(--forest-light); }
 
 /* ── NPC ROW ── */
-.npc-row {
-  width: 100%;
-  max-width: 700px;
-  padding: 0 18px 10px;
+.npc-strip {
+  width: 100%; max-width: 720px;
+  padding: 0 18px 8px;
   display: flex;
   gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
 }
-.npc-row::-webkit-scrollbar { display: none; }
-.npc-chip {
+.npc-strip::-webkit-scrollbar { display: none; }
+.npc-card {
   flex-shrink: 0;
+  background: rgba(42,34,24,0.9);
+  border: 1px solid rgba(201,151,58,0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(196,135,58,0.12);
-  border-radius: 20px;
-  padding: 5px 10px 5px 6px;
+  gap: 8px;
   cursor: pointer;
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
+  min-width: 130px;
 }
-.npc-chip:hover { border-color: rgba(196,135,58,0.4); background: rgba(196,135,58,0.06); }
-.npc-chip.positive { border-color: rgba(100,180,100,0.35); }
-.npc-chip.negative { border-color: rgba(192,57,43,0.35); }
-.npc-avatar {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--felt-light);
-  border: 1px solid rgba(196,135,58,0.3);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.95rem;
-}
-.npc-info { display: flex; flex-direction: column; }
-.npc-name { font-size: 0.7rem; color: var(--parchment); font-family: 'Philosopher', serif; }
-.npc-rel  { font-size: 0.6rem; color: var(--steppe-dark); }
+.npc-card:hover { border-color: rgba(201,151,58,0.35); background: rgba(60,48,32,0.9); }
+.npc-card.allied { border-color: rgba(74,140,66,0.4); }
+.npc-card.hostile { border-color: rgba(184,50,50,0.4); }
+.npc-avatar { font-size: 1.3rem; width: 30px; text-align: center; }
+.npc-info { flex: 1; min-width: 0; }
+.npc-name { font-family: 'Cinzel', serif; font-size: 0.65rem; color: var(--parchment); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.npc-rel-label { font-size: 0.58rem; color: var(--parchment-dark); display: block; margin-top: 1px; }
+.npc-rel-bar { height: 2px; background: rgba(255,255,255,0.06); border-radius: 1px; margin-top: 3px; overflow: hidden; }
+.npc-rel-fill { height: 100%; border-radius: 1px; transition: width 0.4s; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
+.npc-rel-fill.hostile-fill { background: linear-gradient(90deg, #6b1010, var(--blood-light)); }
 
 /* ── MAIN PANEL ── */
-.main-panel {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 18px;
-  flex: 1;
+.main-wrap {
+  width: 100%; max-width: 720px;
+  padding: 0 18px 8px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-bottom: 20px;
 }
 
-/* ── JOURNAL ── */
-.journal {
-  background: linear-gradient(160deg, rgba(28,18,8,0.97), rgba(20,12,4,0.98));
-  border: 1px solid rgba(196,135,58,0.2);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(196,135,58,0.08);
-}
-.journal-header {
-  padding: 12px 16px 10px;
-  border-bottom: 1px solid rgba(196,135,58,0.1);
+/* ── SCHEDULE ── */
+.schedule-panel { }
+.schedule-days {
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.journal-scene-label {
-  font-family: 'Philosopher', serif;
-  font-size: 0.6rem;
-  color: var(--steppe-dark);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  flex: 1;
-}
-.journal-location {
-  font-size: 0.72rem;
-  color: var(--steppe);
-  font-style: italic;
-}
-
-.speaker-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px 16px 8px;
-}
-.speaker-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid var(--steppe-dark);
-  background: var(--felt-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(196,135,58,0.15);
-}
-.speaker-meta { flex: 1; }
-.speaker-name {
-  font-family: 'Philosopher', serif;
-  font-size: 0.88rem;
-  color: var(--steppe-light);
-  font-weight: 700;
-  display: block;
-}
-.speaker-role {
-  font-size: 0.65rem;
-  color: var(--steppe-dark);
-  font-style: italic;
-}
-
-.journal-body {
-  padding: 4px 16px 14px;
-  font-size: clamp(0.83rem, 3vw, 0.92rem);
-  line-height: 1.85;
-  color: var(--parchment);
-  min-height: 70px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-.journal-body em { color: var(--steppe-light); font-style: italic; }
-.journal-body .tense { color: #c0392b; font-style: italic; }
-.journal-body .byz { color: #7eb3d8; font-style: italic; }
-
-/* ── WORLD STATE ── */
-.world-ticker {
-  display: flex;
-  gap: 6px;
-  padding: 8px 16px;
-  border-top: 1px solid rgba(196,135,58,0.08);
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(201,151,58,0.08);
   overflow-x: auto;
   scrollbar-width: none;
 }
-.world-ticker::-webkit-scrollbar { display: none; }
-.ticker-item {
+.schedule-days::-webkit-scrollbar { display: none; }
+.day-slot {
   flex-shrink: 0;
-  font-size: 0.65rem;
-  color: var(--steppe-dark);
-  background: rgba(196,135,58,0.05);
-  border: 1px solid rgba(196,135,58,0.1);
-  border-radius: 4px;
-  padding: 3px 7px;
-  font-style: italic;
-  white-space: nowrap;
+  width: 34px; height: 34px;
+  border-radius: 5px;
+  border: 1px solid rgba(201,151,58,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
 }
-.ticker-item.active { color: var(--steppe); border-color: rgba(196,135,58,0.25); }
+.day-slot.filled { border-color: rgba(201,151,58,0.35); background: rgba(201,151,58,0.06); }
+.day-slot.empty { border-style: dashed; }
+.day-slot:hover { border-color: rgba(201,151,58,0.5); }
+.day-num { font-family: 'Cinzel', serif; font-size: 0.42rem; color: var(--gold-dark); position: absolute; top: 2px; left: 3px; }
+.day-icon { font-size: 1rem; }
 
-/* ── ACTIONS ── */
-.actions-panel {
-  background: linear-gradient(160deg, rgba(28,18,8,0.95), rgba(20,12,4,0.97));
-  border: 1px solid rgba(196,135,58,0.15);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.actions-header {
-  padding: 10px 16px;
-  border-bottom: 1px solid rgba(196,135,58,0.08);
-  font-family: 'Philosopher', serif;
-  font-size: 0.62rem;
-  color: var(--steppe-dark);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.days-remaining {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  color: var(--gold-dark);
+  padding: 0 12px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.next-day-btn {
-  background: rgba(196,135,58,0.12);
-  border: 1px solid rgba(196,135,58,0.3);
+.confirm-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
   border-radius: 6px;
-  padding: 4px 10px;
-  color: var(--steppe-light);
-  font-family: 'Philosopher', serif;
-  font-size: 0.65rem;
+  padding: 5px 12px;
+  color: var(--stone);
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
   cursor: pointer;
   letter-spacing: 0.05em;
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
 }
-.next-day-btn:hover { background: rgba(196,135,58,0.22); border-color: var(--steppe); }
-.next-day-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.confirm-btn:hover { transform: scale(1.03); box-shadow: 0 3px 12px rgba(201,151,58,0.3); }
+.confirm-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
 
-.action-list {
-  display: flex;
-  flex-direction: column;
-}
-.action-btn {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 11px 14px;
-  border: none;
-  border-bottom: 1px solid rgba(196,135,58,0.06);
+/* ── ACTION LIST ── */
+.action-cats { display: flex; gap: 4px; padding: 8px 12px; border-bottom: 1px solid rgba(201,151,58,0.08); overflow-x: auto; scrollbar-width: none; }
+.action-cats::-webkit-scrollbar { display: none; }
+.cat-btn {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(201,151,58,0.15);
   background: transparent;
-  color: var(--parchment);
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(0.78rem, 3vw, 0.86rem);
-  text-align: left;
+  color: var(--parchment-dark);
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-btn.active { background: rgba(201,151,58,0.15); border-color: rgba(201,151,58,0.4); color: var(--gold-light); }
+
+.action-list { display: flex; flex-direction: column; }
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(201,151,58,0.05);
+  cursor: pointer;
+  transition: all 0.15s;
   -webkit-tap-highlight-color: transparent;
   position: relative;
 }
-.action-btn:last-child { border-bottom: none; }
-.action-btn::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 0;
-  background: linear-gradient(90deg, rgba(196,135,58,0.1), transparent);
-  transition: width 0.2s;
-}
-.action-btn:hover::before { width: 100%; }
-.action-btn:hover { color: var(--parchment); }
-.action-btn:active { transform: scale(0.99); }
-.action-btn.spent { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
-.action-btn.used-today {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-.action-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.action-item:last-child { border-bottom: none; }
+.action-item:hover { background: rgba(201,151,58,0.05); }
+.action-item:active { background: rgba(201,151,58,0.1); }
+.action-item.unavailable { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+.action-emoji { font-size: 1.1rem; flex-shrink: 0; }
 .action-content { flex: 1; }
-.action-name { display: block; font-weight: 600; color: var(--parchment); margin-bottom: 2px; }
-.action-desc { display: block; font-size: 0.68rem; color: var(--parchment-dim); line-height: 1.4; }
-.action-cost {
+.action-name { font-family: 'Cinzel', serif; font-size: 0.7rem; color: var(--parchment); display: block; margin-bottom: 1px; }
+.action-desc { font-size: 0.62rem; color: var(--parchment-dark); font-style: italic; }
+.action-days {
   display: flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 0.6rem;
-  color: var(--steppe-dark);
+  gap: 2px;
   flex-shrink: 0;
-  margin-top: 3px;
 }
-.cost-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--steppe); }
+.day-pip { width: 6px; height: 6px; border-radius: 1px; background: var(--gold-dark); }
+
+/* ── EVENT PANEL ── */
+.event-panel { }
+.event-location { font-family: 'Cinzel', serif; font-size: 0.58rem; color: var(--gold-dark); letter-spacing: 0.15em; text-transform: uppercase; }
+.event-speaker-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px 6px; }
+.event-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--gold-dark); background: var(--stone-mid); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.event-meta { flex: 1; }
+.event-speaker-name { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--gold-light); font-weight: 600; display: block; }
+.event-speaker-role { font-size: 0.62rem; color: var(--gold-dark); font-style: italic; }
+.event-body { padding: 4px 12px 12px; font-size: clamp(0.82rem,3vw,0.92rem); line-height: 1.85; color: var(--parchment); min-height: 60px; }
+.event-body em { color: var(--gold-light); font-style: italic; }
+.event-body .danger { color: var(--blood-light); font-style: italic; }
+
+/* ── CHOICES ── */
+.choices-wrap { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+.choice-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,151,58,0.18);
+  border-radius: 7px;
+  color: var(--parchment);
+  font-family: 'Crimson Text', serif;
+  font-size: clamp(0.78rem,3vw,0.86rem);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.choice-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(201,151,58,0.07),transparent); opacity: 0; transition: opacity 0.18s; }
+.choice-btn:hover::before { opacity: 1; }
+.choice-btn:hover { border-color: rgba(201,151,58,0.4); transform: translateX(2px); }
+.choice-btn:active { transform: scale(0.99); }
+.choice-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.choice-text { flex: 1; line-height: 1.5; }
+.choice-hint { display: block; font-size: 0.62rem; color: var(--gold-dark); margin-top: 2px; font-style: italic; }
 
 /* ── LOG ── */
-.log-section {
-  width: 100%;
-  max-width: 700px;
-  padding: 4px 18px 24px;
-}
-.log-title {
-  font-family: 'Philosopher', serif;
-  font-size: 0.6rem;
-  color: var(--steppe-dark);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.log-entry {
-  font-size: 0.7rem;
-  color: rgba(200,180,138,0.45);
-  padding: 3px 8px;
-  border-left: 1px solid rgba(196,135,58,0.12);
-  font-style: italic;
-  margin-bottom: 3px;
-  animation: logIn 0.3s ease;
-  line-height: 1.5;
-}
-.log-entry.imp {
-  color: rgba(196,135,58,0.65);
-  border-left-color: rgba(196,135,58,0.35);
-}
+.log-wrap { width: 100%; max-width: 720px; padding: 4px 18px 20px; }
+.log-title { font-family: 'Cinzel', serif; font-size: 0.55rem; color: var(--gold-dark); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+.log-entry { font-size: 0.68rem; color: rgba(194,180,138,0.45); padding: 3px 8px; border-left: 1px solid rgba(201,151,58,0.1); font-style: italic; margin-bottom: 3px; line-height: 1.5; animation: logIn 0.3s ease; }
+.log-entry.imp { color: rgba(201,151,58,0.6); border-left-color: rgba(201,151,58,0.3); }
 @keyframes logIn { from{opacity:0;transform:translateX(-4px)} to{opacity:1;transform:none} }
 
 /* ── NPC POPUP ── */
-.npc-popup-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.75);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 200;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s;
-  padding: 24px;
-}
-.npc-popup-overlay.show { opacity: 1; pointer-events: all; }
-.npc-popup {
-  background: linear-gradient(160deg, #1e1208, #130c04);
-  border: 1px solid rgba(196,135,58,0.35);
-  border-radius: 14px;
-  padding: 22px 20px;
-  max-width: 380px;
-  width: 100%;
-  transform: scale(0.92);
-  transition: transform 0.3s;
-  box-shadow: 0 0 40px rgba(196,135,58,0.15);
-}
-.npc-popup-overlay.show .npc-popup { transform: scale(1); }
-.npc-popup-avatar { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
-.npc-popup-name {
-  font-family: 'Philosopher', serif;
-  font-size: 1.1rem;
-  color: var(--steppe-light);
-  font-weight: 700;
-  text-align: center;
-  display: block;
-  margin-bottom: 2px;
-}
-.npc-popup-role {
-  font-size: 0.72rem;
-  color: var(--steppe-dark);
-  text-align: center;
-  font-style: italic;
-  display: block;
-  margin-bottom: 12px;
-}
-.npc-popup-rel-bar {
-  height: 4px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 2px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-.npc-popup-rel-fill {
-  height: 100%;
-  border-radius: 2px;
-  transition: width 0.5s;
-}
-.npc-popup-bio {
-  font-size: 0.8rem;
-  line-height: 1.7;
-  color: var(--parchment-dim);
-  margin-bottom: 14px;
-}
-.npc-popup-close {
-  width: 100%;
-  padding: 10px;
-  background: rgba(196,135,58,0.1);
-  border: 1px solid rgba(196,135,58,0.25);
-  border-radius: 8px;
-  color: var(--steppe-light);
-  font-family: 'Philosopher', serif;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.npc-popup-close:hover { background: rgba(196,135,58,0.2); }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px; }
+.overlay.show { opacity: 1; pointer-events: all; }
+.popup { background: linear-gradient(160deg,#2a2218,#1e1810); border: 1px solid rgba(201,151,58,0.3); border-radius: 14px; padding: 22px 18px; max-width: 360px; width: 100%; transform: scale(0.92); transition: transform 0.3s; box-shadow: 0 0 40px rgba(0,0,0,0.7); }
+.overlay.show .popup { transform: scale(1); }
+.popup-avatar { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+.popup-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold-light); font-weight: 700; text-align: center; display: block; margin-bottom: 2px; }
+.popup-role { font-size: 0.7rem; color: var(--gold-dark); text-align: center; font-style: italic; display: block; margin-bottom: 10px; }
+.popup-rel-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 4px; overflow: hidden; }
+.popup-rel-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+.popup-rel-label { font-size: 0.62rem; color: var(--parchment-dark); text-align: center; margin-bottom: 10px; }
+.popup-bio { font-size: 0.78rem; line-height: 1.7; color: var(--parchment-dim); margin-bottom: 12px; }
+.popup-schedule { font-size: 0.68rem; color: var(--gold-dark); font-style: italic; margin-bottom: 14px; }
+.popup-close { width: 100%; padding: 9px; background: rgba(201,151,58,0.08); border: 1px solid rgba(201,151,58,0.2); border-radius: 7px; color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+.popup-close:hover { background: rgba(201,151,58,0.16); }
+
+/* ── HEIR POPUP ── */
+.heir-section { padding: 8px 12px; border-top: 1px solid rgba(201,151,58,0.08); }
+.heir-row { display: flex; align-items: center; gap: 8px; }
+.heir-avatar { font-size: 1.2rem; }
+.heir-info { flex: 1; }
+.heir-name { font-family: 'Cinzel', serif; font-size: 0.68rem; color: var(--parchment); display: block; }
+.heir-detail { font-size: 0.58rem; color: var(--parchment-dark); font-style: italic; }
+.no-heir { font-size: 0.68rem; color: var(--blood-light); font-style: italic; }
 
 /* ── OUTCOME ── */
-.outcome-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.88);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 300;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.5s;
-  padding: 24px;
-}
+.outcome-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.5s; padding: 24px; }
 .outcome-overlay.show { opacity: 1; pointer-events: all; }
-.outcome-card {
-  background: linear-gradient(160deg, #1e1208, #130c04);
-  border: 1px solid var(--steppe);
-  border-radius: 16px;
-  padding: 28px 22px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 0 60px rgba(196,135,58,0.2);
-  transform: scale(0.9);
-  transition: transform 0.4s;
-}
+.outcome-card { background: linear-gradient(160deg,#2a2218,#1a1208); border: 1px solid var(--gold); border-radius: 16px; padding: 28px 22px; max-width: 380px; width: 100%; text-align: center; box-shadow: 0 0 60px rgba(201,151,58,0.15); transform: scale(0.9); transition: transform 0.4s; }
 .outcome-overlay.show .outcome-card { transform: scale(1); }
-.outcome-icon { font-size: 3rem; margin-bottom: 12px; display: block; }
-.outcome-title {
-  font-family: 'Philosopher', serif;
-  font-size: 1.3rem;
-  color: var(--steppe-light);
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.outcome-body {
-  font-size: 0.86rem;
-  line-height: 1.75;
-  color: var(--parchment-dim);
-  margin-bottom: 20px;
-}
-.restart-btn {
-  background: linear-gradient(135deg, var(--steppe-dark), var(--steppe));
-  border: none;
-  border-radius: 8px;
-  padding: 12px 28px;
-  color: var(--felt);
-  font-family: 'Philosopher', serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: all 0.2s;
-}
+.out-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+.out-title { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold-light); font-weight: 700; margin-bottom: 10px; }
+.out-body { font-size: 0.84rem; line-height: 1.75; color: var(--parchment-dim); margin-bottom: 18px; }
+.restart-btn { background: linear-gradient(135deg,var(--gold-dark),var(--gold)); border: none; border-radius: 8px; padding: 11px 26px; color: var(--stone); font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; transition: all 0.2s; }
 .restart-btn:hover { transform: scale(1.04); }
 
-@keyframes pulse {
-  0%,100%{box-shadow:0 6px 30px rgba(0,0,0,0.6),inset 0 1px 0 rgba(196,135,58,0.08)}
-  50%{box-shadow:0 6px 30px rgba(0,0,0,0.6),0 0 20px rgba(196,135,58,0.15),inset 0 1px 0 rgba(196,135,58,0.08)}
-}
-.journal.flash { animation: pulse 0.5s ease; }
+.flash-border { animation: flashBorder 0.5s ease; }
+@keyframes flashBorder { 0%,100%{box-shadow:0 4px 20px rgba(0,0,0,0.5)} 50%{box-shadow:0 4px 20px rgba(0,0,0,0.5),0 0 20px rgba(201,151,58,0.2)} }
+
+.tag-good { color: #4a8c42; font-size: 0.62rem; font-family: 'Cinzel', serif; }
+.tag-bad { color: var(--blood-light); font-size: 0.62rem; font-family: 'Cinzel', serif; }
 </style>
 </head>
 <body>
 
 <header class="hdr">
-  <span class="hdr-symbol">᠊᠊᠊ ᠴᠠᠭᠠᠨ ᠴᠢᠨᠣᠳ ᠊᠊᠊</span>
-  <div class="hdr-title">코스탄다이의 일지</div>
-  <div class="hdr-sub">서방 원정 · 1293년</div>
+  <span class="hdr-crest">✦ ✦ ✦</span>
+  <div class="hdr-title">에르덴 왕국</div>
+  <div class="hdr-sub">오웬 백작의 연대기</div>
   <div class="hdr-line"></div>
 </header>
 
-<!-- DATE & AP -->
 <div class="date-bar">
-  <div>
-    <span class="date-label">현재 날짜</span>
-    <span class="date-val" id="dateVal">1293년 봄, 1월</span>
-  </div>
-  <div class="ap-display">
-    <span class="ap-label">행동력</span>
-    <div class="ap-dot" id="ap0"></div>
-    <div class="ap-dot" id="ap1"></div>
-    <div class="ap-dot" id="ap2"></div>
-  </div>
+  <span class="date-txt" id="dateTxt">—</span>
+  <span class="week-txt" id="weekTxt">—</span>
 </div>
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat-card">
-    <span class="stat-icon">🗡️</span>
-    <span class="stat-name">무력</span>
-    <span class="stat-num" id="s-combat">40</span>
-    <div class="stat-pip-row" id="pip-combat"></div>
+<!-- TOP GRID -->
+<div class="top-grid">
+  <!-- 능력치 -->
+  <div class="panel">
+    <div class="panel-hdr"><span>백작 오웬</span><span id="ageDisplay" style="color:var(--parchment-dark);font-size:0.6rem;"></span></div>
+    <div class="panel-body" id="statsBody"></div>
   </div>
-  <div class="stat-card">
-    <span class="stat-icon">🪶</span>
-    <span class="stat-name">언변</span>
-    <span class="stat-num" id="s-speech">55</span>
-    <div class="stat-pip-row" id="pip-speech"></div>
-  </div>
-  <div class="stat-card">
-    <span class="stat-icon">👁️</span>
-    <span class="stat-name">첩보</span>
-    <span class="stat-num" id="s-intel">45</span>
-    <div class="stat-pip-row" id="pip-intel"></div>
-  </div>
-  <div class="stat-card">
-    <span class="stat-icon">⚖️</span>
-    <span class="stat-name">명성</span>
-    <span class="stat-num" id="s-fame">30</span>
-    <div class="stat-pip-row" id="pip-fame"></div>
-  </div>
-</div>
-
-<!-- NPC ROW -->
-<div class="npc-row" id="npcRow"></div>
-
-<!-- MAIN -->
-<div class="main-panel">
-
-  <!-- JOURNAL -->
-  <div class="journal" id="journal">
-    <div class="journal-header">
-      <span class="journal-scene-label" id="sceneLabel">장면</span>
-      <span class="journal-location" id="sceneLocation">—</span>
-    </div>
-    <div class="speaker-row">
-      <div class="speaker-avatar" id="speakerAvatar">🌙</div>
-      <div class="speaker-meta">
-        <span class="speaker-name" id="speakerName">—</span>
-        <span class="speaker-role" id="speakerRole">—</span>
+  <!-- 영지 -->
+  <div class="panel">
+    <div class="panel-hdr"><span>카스텔 영지</span></div>
+    <div class="panel-body">
+      <div class="domain-grid">
+        <div class="domain-item">
+          <span class="domain-label">개발도</span>
+          <span class="domain-val" id="devVal">—</span>
+          <div class="domain-bar-bg"><div class="domain-bar-fill bar-dev" id="devBar" style="width:0%"></div></div>
+        </div>
+        <div class="domain-item">
+          <span class="domain-label">충성도</span>
+          <span class="domain-val" id="loyVal">—</span>
+          <div class="domain-bar-bg"><div class="domain-bar-fill bar-loy" id="loyBar" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div style="margin-top:10px;">
+        <div class="res-row"><span class="res-label">⚜️ 세수</span><span class="res-val" id="resGold">—</span></div>
+        <div class="res-row"><span class="res-label">🌾 식량</span><span class="res-val" id="resFood">—</span></div>
+        <div class="res-row"><span class="res-label">⚔️ 병력</span><span class="res-val" id="resTroop">—</span></div>
+        <div class="res-row"><span class="res-label">🛡 방어력</span><span class="res-val" id="resDef">—</span></div>
       </div>
     </div>
-    <div class="journal-body" id="journalBody"></div>
-    <div class="world-ticker" id="worldTicker"></div>
+    <!-- 후계자 -->
+    <div class="heir-section" id="heirSection"></div>
+  </div>
+</div>
+
+<!-- NPC STRIP -->
+<div class="npc-strip" id="npcStrip"></div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- 이벤트 패널 -->
+  <div class="panel event-panel" id="eventPanel" style="display:none;">
+    <div class="panel-hdr">
+      <span id="eventLabel">사건</span>
+      <span class="event-location" id="eventLoc">—</span>
+    </div>
+    <div class="event-speaker-row">
+      <div class="event-avatar" id="eventAvatar">📜</div>
+      <div class="event-meta">
+        <span class="event-speaker-name" id="eventSpeaker">—</span>
+        <span class="event-speaker-role" id="eventRole">—</span>
+      </div>
+    </div>
+    <div class="event-body" id="eventBody"></div>
+    <div class="choices-wrap" id="choicesWrap"></div>
   </div>
 
-  <!-- ACTIONS -->
-  <div class="actions-panel">
-    <div class="actions-header">
-      <span>오늘 무엇을 하겠는가</span>
-      <button class="next-day-btn" id="nextDayBtn" onclick="nextDay()">다음 날 →</button>
+  <!-- 스케줄 패널 -->
+  <div class="panel schedule-panel" id="schedulePanel">
+    <div class="panel-hdr">
+      <span>이번 주 스케줄</span>
+      <span style="color:var(--parchment-dark);font-size:0.6rem;" id="schedInfo">7일을 채우세요</span>
     </div>
+    <div class="schedule-days" id="scheduleDays"></div>
+    <div class="days-remaining">
+      <span id="daysRemain">남은 일수: <strong style="color:var(--gold-light);">7</strong>일</span>
+      <button class="confirm-btn" id="confirmBtn" onclick="confirmSchedule()" disabled>확정 →</button>
+    </div>
+    <!-- 카테고리 탭 -->
+    <div class="action-cats" id="actionCats"></div>
     <div class="action-list" id="actionList"></div>
   </div>
 
 </div>
 
 <!-- LOG -->
-<div class="log-section">
-  <div class="log-title">◈ 원정 기록</div>
+<div class="log-wrap">
+  <div class="log-title">◈ 연대기 기록</div>
   <div id="logList"></div>
 </div>
 
 <!-- NPC POPUP -->
-<div class="npc-popup-overlay" id="npcPopup" onclick="closeNpcPopup(event)">
-  <div class="npc-popup">
-    <div class="npc-popup-avatar" id="popupAvatar"></div>
-    <span class="npc-popup-name" id="popupName"></span>
-    <span class="npc-popup-role" id="popupRole"></span>
-    <div class="npc-popup-rel-bar">
-      <div class="npc-popup-rel-fill" id="popupRelFill" style="width:50%;background:var(--steppe)"></div>
-    </div>
-    <div class="npc-popup-bio" id="popupBio"></div>
-    <button class="npc-popup-close" onclick="closeNpcPopup()">닫기</button>
+<div class="overlay" id="npcOverlay" onclick="closePopup(event,'npcOverlay')">
+  <div class="popup">
+    <div class="popup-avatar" id="popAvatar"></div>
+    <span class="popup-name" id="popName"></span>
+    <span class="popup-role" id="popRole"></span>
+    <div class="popup-rel-bar"><div class="popup-rel-fill" id="popRelFill" style="width:50%"></div></div>
+    <div class="popup-rel-label" id="popRelLabel"></div>
+    <div class="popup-bio" id="popBio"></div>
+    <div class="popup-schedule" id="popSchedule"></div>
+    <button class="popup-close" onclick="closePopupById('npcOverlay')">닫기</button>
   </div>
 </div>
 
 <!-- OUTCOME -->
 <div class="outcome-overlay" id="outcomeOverlay">
   <div class="outcome-card">
-    <span class="outcome-icon" id="outIcon"></span>
-    <div class="outcome-title" id="outTitle"></div>
-    <div class="outcome-body" id="outBody"></div>
-    <button class="restart-btn" onclick="restart()">처음부터 다시</button>
+    <span class="out-icon" id="outIcon"></span>
+    <div class="out-title" id="outTitle"></div>
+    <div class="out-body" id="outBody"></div>
+    <button class="restart-btn" onclick="restart()">새 연대기를 시작하다</button>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
+// GAME STATE
+// ═══════════════════════════════════
 let G = {};
 
 function initGame() {
   G = {
-    // time
-    year: 1293,
-    season: '봄',
-    month: 1,      // 1~12
-    day: 1,        // each "day" = one turn
-    totalDays: 0,
-    ap: 3,         // action points per day
-    apMax: 3,
-    usedActions: new Set(),
+    // 시간
+    year: 1200, month: 3, week: 1,
+    totalWeeks: 0,
 
-    // player stats
-    combat: 40,
-    speech: 55,
-    intel:  45,
-    fame:   30,
+    // 플레이어 능력치 (최대 50)
+    stats: { combat: 12, diplomacy: 10, intrigue: 8, admin: 11, learning: 9 },
+    // 능력치 카운트 (30이 되면 +1)
+    statCount: { combat: 0, diplomacy: 0, intrigue: 0, admin: 0, learning: 0 },
 
-    // NPCs
+    // 인생관
+    outlook: { type: 'admin', stars: 2 }, // 관리 2성
+
+    // 영지
+    domain: { dev: 2, loyalty: 65 },
+
+    // 자원 (기본값, 건물로 %상승)
+    baseGold: 100, baseFood: 120, baseTroop: 80, baseDef: 60,
+    buildings: [], // 지어진 건물 목록
+
+    // 개인 나이 / 건강
+    age: 28, health: 80,
+
+    // 후계자
+    heir: { name: '아든', age: 6, outlook: null, eduFocus: { combat:0, diplomacy:0, intrigue:0, admin:0, learning:0 } },
+
+    // NPC
     npcs: {
-      nogai: {
-        name: '노가이 칸', role: '킵차크 독립 세력의 칸',
-        avatar: '🐺', rel: 40,
-        bio: '킵차크 칸국의 실세. 명목상 신하이나 사실상 독립 군주처럼 행동한다. 코스탄다이를 도구로 볼지, 동반자로 볼지 아직 결정하지 못했다.',
-        schedule: ['전장 순찰','막사 회의','사냥','사냥','막사 회의']
-      },
-      kostandai_inner: {  // 내면의 목소리 — 플레이어 정체성
-        name: '내면의 목소리', role: '두 정체성 사이에서',
-        avatar: '🌓', rel: 50,
-        bio: '나는 몽골인인가, 비잔티움인인가. 코스탄다이 아나스타시오스는 두 세계 어디에도 완전히 속하지 않는다.',
-        schedule: []
-      },
-      rashid: {
-        name: '라시드 앗 딘', role: '일 칸국 역사가 · 의사',
-        avatar: '📜', rel: 55,
-        bio: '방대한 역사서 편찬을 진행 중인 페르시아 학자. 코스탄다이의 혼혈 정체성에 학문적 관심을 보인다.',
-        schedule: ['저술','저술','시찰','저술','대화']
-      },
-      byzantine: {
-        name: '에우독시아', role: '비잔티움 밀사',
-        avatar: '🕊️', rel: 25,
-        bio: '콘스탄티노폴리스에서 파견된 밀사. 몽골의 서방 정책에 대한 정보를 수집하고 있다. 코스탄다이의 비잔티움 혈통을 이용하려 한다.',
-        schedule: ['정보 수집','은밀한 접촉','정보 수집','기도','은밀한 접촉']
-      },
-      iron_general: {
-        name: '테무르 노얀', role: '카단 울루스 천호장',
-        avatar: '⚔️', rel: 35,
-        bio: '순혈 몽골 전통주의자. 혼혈인 코스탄다이를 경계하지만 그의 언변 능력은 인정한다.',
-        schedule: ['훈련','훈련','순찰','막사 회의','훈련']
-      },
+      pirke: { name: '피르케', title: '동쪽 백작', avatar: '⚔️', rel: 20, bio: '대대로 전사 집안. 정예 기사단을 보유하고 있으며 오웬을 얕본다. 직선적이고 거칠다.', schedule: ['훈련','순찰','훈련','원정 준비','훈련'] },
+      corcus: { name: '코르쿠스', title: '북쪽 백작', avatar: '💰', rel: 45, bio: '왕국 최대 곡창지대를 보유한 부유한 영주. 겁이 많고 줄을 잘 탄다. 강한 쪽에 붙는 성향.', schedule: ['회계','연회','서신','사냥','회계'] },
+      falzes: { name: '팔제스 3세', title: '에르덴 왕', avatar: '👑', rel: 55, bio: '병상에 누운 늙은 왕. 실권이 없다. 세 백작이 사실상 왕국을 나눠 다스리고 있다. 후계자가 없다.', schedule: ['요양','요양','알현','요양','요양'] },
     },
 
-    // world flags
-    world: {
-      nogaiSuspicion: 0,   // 노가이의 의심 수치
-      byzantineContact: false,
-      rashidFavor: false,
-      unrest: 10,          // 서방 원정군 내 동요
-    },
+    // 스케줄
+    schedule: [], // [{actionKey, days}]
+    scheduleDaysUsed: 0,
 
-    // scenario
-    scenarioDay: 0,
+    // 현재 이벤트
+    currentEvent: null,
+    pendingEvents: [],
+
+    // 기록
     log: [],
     gameOver: false,
   };
 }
 
-// ═══════════════════════════════════════════
-// SCENARIOS — 날짜별 이벤트 시나리오
-// ═══════════════════════════════════════════
-const SCENARIOS = [
-  // Day 0 — 프롤로그
-  {
-    label: '프롤로그',
-    location: '도버 해협 인근, 원정군 막사',
-    avatar: '🌓', name: '코스탄다이 아나스타시오스', role: '나 자신',
-    text: `바람이 서쪽에서 불어온다. <em>짠 냄새가 난다 — 바다 냄새. 어머니가 말해주던 그 바다.</em>\n\n1293년. 나는 노가이 칸의 막사에 있다. 몽골 원정군의 끝자락, 유럽의 끝에서. 내 이름은 코스탄다이 아나스타시오스. 몽골인이기도 하고, 비잔티움인이기도 하며, 사실은 어느 쪽도 아니다.\n\n<span class='byz'>콘스탄티노폴리스는 저 바다 건너에 있다.</span> 그리고 노가이 칸은 내게 그 방향을 가리키며 무언가를 원하고 있다.\n\n오늘 하루, 무엇을 해야 하는가.`,
-    worldState: ['서방 원정 진행 중', '노가이 칸 — 독립 행보', '비잔티움 밀사 잠복'],
-    actions: ['talk_nogai', 'study_rashid', 'scout', 'train', 'rest']
-  },
-  // Day 1
-  {
-    label: '1일차',
-    location: '원정군 막사, 새벽',
-    avatar: '🐺', name: '노가이 칸', role: '킵차크의 실권자',
-    text: `막사 안이 가죽 냄새로 가득하다. 노가이가 지도를 내려다보며 말한다.\n\n"<em>코스탄다이. 너는 두 세계의 말을 안다.</em> 비잔티움 황제에게 전할 말이 있다. 하지만 나는 너를 믿어야 하는지 아직 모른다."\n\n그는 잠시 멈추더니 덧붙인다. <span class='tense'>"네가 어느 쪽 사람인지 — 곧 보이겠지."</span>`,
-    worldState: ['노가이 — 비잔티움 접촉 시도', '원정군 보급 부족 소문', '테무르 노얀 불만 고조'],
-    actions: ['talk_nogai', 'talk_byzantine', 'study_rashid', 'scout', 'train']
-  },
-  // Day 2
-  {
-    label: '2일차',
-    location: '라시드 앗 딘의 천막',
-    avatar: '📜', name: '라시드 앗 딘', role: '역사가 · 의사',
-    text: `학자의 천막은 기이하게도 조용하다. 양피지 냄새.\n\n"<em>코스탄다이 공. 나는 당신 같은 사람을 역사서에 기록하고 싶습니다.</em> 두 문명의 경계에 선 인물. 그런데 한 가지 물어봐도 될까요?"\n\n그가 붓을 내려놓는다. "당신은 지금 누구를 위해 싸우고 있습니까?"`,
-    worldState: ['라시드 — 역사 자료 수집 중', '원정군 내 첩자 활동 감지', '비잔티움 밀사 — 코스탄다이 접근 준비'],
-    actions: ['talk_rashid', 'talk_byzantine', 'talk_nogai', 'scout', 'rest']
-  },
-  // Day 3
-  {
-    label: '3일차',
-    location: '해협 절벽 인근, 황혼',
-    avatar: '🕊️', name: '에우독시아', role: '비잔티움 밀사',
-    text: `여자가 먼저 말을 건다. 그리스어였다.\n\n"<em>아나스타시오스 공. 콘스탄티노폴리스는 당신을 기억합니다.</em>"\n\n나는 그 말이 함정인지, 진심인지 알 수 없었다. 그녀는 계속 말한다. <span class='byz'>"황제 폐하께서는 몽골 원정군의 실제 의도를 알고 싶어 하십니다. 당신만이 알 수 있는 것을요."</span>\n\n<span class='tense'>노가이는 내가 이 여자를 만났다는 것을 이미 알고 있을까?</span>`,
-    worldState: ['비잔티움 — 몽골 내부 정보 요청', '노가이 의심 수치 상승 중', '테무르 노얀 감시망 작동'],
-    actions: ['talk_byzantine', 'talk_nogai', 'scout', 'train', 'study_rashid']
-  },
-  // Day 4
-  {
-    label: '4일차',
-    location: '막사 군사 회의실',
-    avatar: '⚔️', name: '테무르 노얀', role: '천호장',
-    text: `테무르가 나를 노려본다.\n\n"<em>코스탄다이. 네가 어제 해협 근처에서 무엇을 했는지 보고받았다.</em> 노가이 칸은 아직 모른다. 내가 말하기 전에 설명해봐라."\n\n그의 손이 칼자루에 올라가 있다. <span class='tense'>이것은 심문인가, 아니면 협상인가.</span>`,
-    worldState: ['테무르 노얀 — 코스탄다이 감시 중', '원정군 기강 문제 부상', '노가이 결단의 날 임박'],
-    actions: ['talk_iron', 'talk_nogai', 'scout', 'train', 'rest']
-  },
-  // Day 5 — FINAL
-  {
-    label: '결단의 날',
-    location: '노가이 칸의 주막사, 심야',
-    avatar: '🐺', name: '노가이 칸', role: '킵차크의 실권자',
-    text: `노가이가 혼자 앉아 있다. 촛불 하나.\n\n"<em>코스탄다이. 나는 결정했다.</em> 비잔티움에 사절을 보낸다. 그 사절은 너다."\n\n그가 나를 바라본다. 눈빛은 읽기 어렵다. "너는 내 이름으로 가겠지만, 네 혈통으로 설득할 것이다. 만약 네가 나를 배신한다면—"\n\n그는 말을 잇지 않는다. <span class='tense'>침묵이 위협보다 무겁다.</span>\n\n이제 선택의 순간이 왔다.`,
-    worldState: ['결단의 날 — 사절 파견 결정', '원정의 방향이 바뀐다', '코스탄다이의 정체성 시험'],
-    actions: ['accept_mission', 'refuse_mission', 'negotiate_terms']
-  },
-];
-
-// ═══════════════════════════════════════════
-// ACTIONS 정의
-// ═══════════════════════════════════════════
-const ACTIONS = {
-  talk_nogai: {
-    icon: '🐺', name: '노가이 칸과 대화', cost: 1,
-    desc: '칸의 의중을 파악하고 신뢰를 쌓는다',
-    fn: () => {
-      G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 8);
-      G.speech = Math.min(100, G.speech + 2);
-      G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 3);
-      addLog('노가이 칸과 대화. 그의 표정이 조금 부드러워졌다.', false);
-    }
-  },
-  talk_byzantine: {
-    icon: '🕊️', name: '에우독시아와 접촉', cost: 1,
-    desc: '비잔티움 밀사와 비밀리에 만난다',
-    fn: () => {
-      G.npcs.byzantine.rel = Math.min(100, G.npcs.byzantine.rel + 10);
-      G.world.byzantineContact = true;
-      G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 8);
-      G.intel = Math.min(100, G.intel + 3);
-      addLog('에우독시아와 접촉. 비잔티움의 의도를 조금 더 파악했다. 노가이의 의심이 커진다.', true);
-    }
-  },
-  study_rashid: {
-    icon: '📜', name: '라시드와 학문 토론', cost: 1,
-    desc: '역사가의 시각으로 현재 상황을 읽는다',
-    fn: () => {
-      G.npcs.rashid.rel = Math.min(100, G.npcs.rashid.rel + 10);
-      G.world.rashidFavor = true;
-      G.speech = Math.min(100, G.speech + 3);
-      G.fame = Math.min(100, G.fame + 2);
-      addLog('라시드와 토론. 언변이 향상되고 명성이 쌓였다.');
-    }
-  },
-  talk_rashid: {
-    icon: '📜', name: '라시드에게 조언 구하기', cost: 1,
-    desc: '정체성의 혼란을 학자의 관점에서 정리한다',
-    fn: () => {
-      G.npcs.rashid.rel = Math.min(100, G.npcs.rashid.rel + 8);
-      G.fame = Math.min(100, G.fame + 3);
-      G.speech = Math.min(100, G.speech + 2);
-      addLog('라시드에게 조언을 구했다. "두 세계를 아는 자가 역사를 만든다"고 그가 말했다.', false);
-    }
-  },
-  talk_iron: {
-    icon: '⚔️', name: '테무르 노얀을 설득', cost: 1,
-    desc: '의심받고 있는 상황을 언변으로 돌파한다',
-    fn: () => {
-      if (G.speech > 55) {
-        G.npcs.iron_general.rel = Math.min(100, G.npcs.iron_general.rel + 12);
-        G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 5);
-        addLog('테무르를 설득하는 데 성공. 의심이 누그러졌다.', true);
-      } else {
-        G.npcs.iron_general.rel = Math.max(0, G.npcs.iron_general.rel - 5);
-        G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 5);
-        addLog('테무르를 설득하지 못했다. 언변이 더 필요하다.');
-      }
-    }
-  },
-  scout: {
-    icon: '👁️', name: '정보 수집', cost: 1,
-    desc: '원정군 내부와 주변 동향을 살핀다',
-    fn: () => {
-      G.intel = Math.min(100, G.intel + 4);
-      G.world.unrest = Math.max(0, G.world.unrest - 3);
-      addLog('정보 수집 완료. 원정군의 동향을 파악했다.');
-    }
-  },
-  train: {
-    icon: '🗡️', name: '무예 수련', cost: 1,
-    desc: '몽골 전사로서의 기량을 갈고 닦는다',
-    fn: () => {
-      G.combat = Math.min(100, G.combat + 4);
-      G.npcs.iron_general.rel = Math.min(100, G.npcs.iron_general.rel + 5);
-      addLog('수련 완료. 테무르 노얀이 인정하는 눈빛을 보냈다.');
-    }
-  },
-  rest: {
-    icon: '🌙', name: '휴식 및 명상', cost: 1,
-    desc: '두 정체성 사이에서 스스로를 돌아본다',
-    fn: () => {
-      G.fame = Math.min(100, G.fame + 1);
-      G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 2);
-      addLog('고요한 밤. 내가 누구인지를 다시 생각했다.');
-    }
-  },
-  // 최종 선택
-  accept_mission: {
-    icon: '🌍', name: '사절직을 수락한다', cost: 3,
-    desc: '노가이의 이름으로 비잔티움으로 간다',
-    fn: () => {
-      G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 15);
-      addLog('사절직 수락. 두 세계 사이의 다리가 되기로 했다.', true);
-      endGame('bridge');
-    }
-  },
-  refuse_mission: {
-    icon: '🚫', name: '거절하고 독자 행보를 택한다', cost: 3,
-    desc: '몽골도, 비잔티움도 아닌 나만의 길을 간다',
-    fn: () => {
-      G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 30);
-      addLog('거절. 노가이의 눈빛이 차갑게 굳었다.', true);
-      endGame('alone');
-    }
-  },
-  negotiate_terms: {
-    icon: '⚖️', name: '조건을 협상한다', cost: 2,
-    desc: '언변으로 유리한 조건을 얻어낸다',
-    fn: () => {
-      if (G.speech >= 60) {
-        G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 8);
-        G.fame = Math.min(100, G.fame + 10);
-        addLog('협상 성공. 나만의 조건으로 사절이 되었다.', true);
-        endGame('diplomat');
-      } else {
-        G.npcs.nogai.rel = Math.max(0, G.npcs.nogai.rel - 10);
-        addLog('협상 실패. 언변이 부족했다. 노가이가 냉담해졌다.');
-        endGame('failed');
-      }
-    }
-  }
+// ═══════════════════════════════════
+// 건물 정의
+// ═══════════════════════════════════
+const BUILDINGS = {
+  farm:     { name: '농장',        icon: '🌾', cost: 150, devReq: 1, effect: { food: 20 } },
+  market:   { name: '시장',        icon: '🏪', cost: 200, devReq: 1, effect: { gold: 20 } },
+  militia:  { name: '민병대 막사', icon: '🛡', cost: 180, devReq: 1, effect: { troop: 20, troopSpeed: 10 } },
+  wall:     { name: '성벽 강화',   icon: '🏰', cost: 300, devReq: 3, effect: { def: 20 } },
+  barracks: { name: '병영',        icon: '⚔️', cost: 350, devReq: 3, effect: { troop: 20, combat: 10 } },
+  trade:    { name: '교역소',      icon: '⚓', cost: 280, devReq: 3, effect: { gold: 20 } },
+  library:  { name: '도서관',      icon: '📚', cost: 250, devReq: 3, effect: { heirEdu: 20 } },
 };
 
-// ═══════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════
-function renderDate() {
-  const seasons = ['봄','봄','봄','여름','여름','여름','가을','가을','가을','겨울','겨울','겨울'];
-  G.season = seasons[G.month - 1];
-  document.getElementById('dateVal').textContent = `${G.year}년 ${G.season}, ${G.month}월 ${G.day}일`;
+function getResources() {
+  let gold = G.baseGold, food = G.baseFood, troop = G.baseTroop, def = G.baseDef;
+  for (const b of G.buildings) {
+    const bd = BUILDINGS[b];
+    if (!bd) continue;
+    if (bd.effect.gold)  gold  += Math.round(G.baseGold  * bd.effect.gold  / 100);
+    if (bd.effect.food)  food  += Math.round(G.baseFood  * bd.effect.food  / 100);
+    if (bd.effect.troop) troop += Math.round(G.baseTroop * bd.effect.troop / 100);
+    if (bd.effect.def)   def   += Math.round(G.baseDef   * bd.effect.def   / 100);
+  }
+  return { gold, food, troop, def };
 }
 
-function renderAP() {
-  for (let i = 0; i < G.apMax; i++) {
-    const dot = document.getElementById(`ap${i}`);
-    dot.classList.toggle('used', i >= G.ap);
-  }
+// ═══════════════════════════════════
+// 행동 정의
+// ═══════════════════════════════════
+const ACTIONS = {
+  // 전투
+  train:    { cat:'combat',    icon:'⚔️', name:'무예 훈련',     days:2, desc:'전투 능력 단련. 전투 카운트 +1', statKey:'combat' },
+  patrol:   { cat:'combat',    icon:'🛡', name:'병력 순찰',     days:1, desc:'병력 상태 점검. 이벤트 발생 가능', statKey:null },
+  campaign: { cat:'combat',    icon:'🗡', name:'원정',          days:7, desc:'전쟁/약탈. 단독 사용 필수', statKey:null, solo:true },
+  // 외교
+  letter:   { cat:'diplomacy', icon:'✉️', name:'서신',          days:1, desc:'타 영주에게 서신 발송. 관계 이벤트', statKey:'diplomacy' },
+  feast:    { cat:'diplomacy', icon:'🍷', name:'연회 개최',     days:3, desc:'관계 이벤트. 세수 소비', statKey:'diplomacy' },
+  visit:    { cat:'diplomacy', icon:'🤝', name:'타 영주 방문',  days:4, desc:'직접 방문. 관계 이벤트 ++', statKey:'diplomacy' },
+  // 계책
+  spy:      { cat:'intrigue',  icon:'👁', name:'첩보 수집',     days:2, desc:'타 영주 정보 획득. 이벤트', statKey:'intrigue' },
+  scheme:   { cat:'intrigue',  icon:'🌑', name:'음모 꾸미기',   days:3, desc:'음모 트리거. 위험 수반', statKey:'intrigue' },
+  assassin: { cat:'intrigue',  icon:'🗡', name:'암살 시도',     days:7, desc:'단독 사용. 실패 시 큰 리스크', statKey:null, solo:true },
+  // 관리
+  admin:    { cat:'admin',     icon:'📋', name:'내정',          days:2, desc:'개발도 카운트 +1', statKey:'admin' },
+  build:    { cat:'admin',     icon:'🏗', name:'건설 감독',     days:3, desc:'건물 건설 속도 +. 이벤트', statKey:null },
+  trial:    { cat:'admin',     icon:'⚖️', name:'재판',          days:1, desc:'충성도 이벤트 트리거', statKey:null },
+  // 학습
+  read:     { cat:'learning',  icon:'📖', name:'독서',          days:1, desc:'학습 카운트 +1', statKey:'learning' },
+  tutor:    { cat:'learning',  icon:'🎓', name:'사사',          days:2, desc:'능력치 카운트 +1 (선택)', statKey:null },
+  heirEdu:  { cat:'learning',  icon:'👶', name:'후계자 교육',   days:3, desc:'후계자 인생관 형성에 기여', statKey:null },
+  // 휴식
+  rest:     { cat:'rest',      icon:'🌙', name:'휴식',          days:1, desc:'건강 회복. +5', statKey:null },
+};
+
+const CATS = [
+  { key:'all',      label:'전체' },
+  { key:'combat',   label:'⚔️ 전투' },
+  { key:'diplomacy',label:'🤝 외교' },
+  { key:'intrigue', label:'🌑 계책' },
+  { key:'admin',    label:'📋 관리' },
+  { key:'learning', label:'📖 학습' },
+  { key:'rest',     label:'🌙 휴식' },
+];
+let activeCat = 'all';
+
+// ═══════════════════════════════════
+// 이벤트 풀
+// ═══════════════════════════════════
+const EVENT_POOL = {
+  // 트리거 이벤트
+  trigger: {
+    patrol: [
+      {
+        id:'deserter', label:'사건', loc:'카스텔 영지 국경', avatar:'⚔️', speaker:'병사 전령', role:'국경 수비대',
+        text:`"백작님, <em>탈영병이 발생했습니다.</em> 국경 초소에서 세 명이 사라졌습니다. 피르케 백작 쪽으로 넘어간 것 같습니다."`,
+        choices: [
+          { icon:'⚔️', text:'즉시 추격대를 보낸다', hint:'전투 판정. 성공 시 탈영병 처벌, 병력 유지', statKey:'combat', threshold:15,
+            success: s => { addLog('탈영병을 잡아 처형했다. 기강이 잡혔다.', true); },
+            fail:    s => { addLog('추격에 실패했다. 탈영 소식이 퍼져 충성도가 떨어졌다.'); s.domain.loyalty = Math.max(0, s.domain.loyalty-8); }
+          },
+          { icon:'⚖️', text:'공개 재판을 열어 경고한다', hint:'관리 판정. 성공 시 충성도 +', statKey:'admin', threshold:12,
+            success: s => { s.domain.loyalty = Math.min(100, s.domain.loyalty+5); addLog('재판으로 기강을 바로잡았다. 충성도가 올랐다.', true); },
+            fail:    s => { addLog('재판이 흐지부지됐다. 효과가 없었다.'); }
+          },
+          { icon:'🌙', text:'눈감아 준다', hint:'판정 없음. 단기적 무사. 장기적 기강 해이',
+            fn: s => { s.domain.loyalty = Math.max(0, s.domain.loyalty-3); addLog('탈영을 묵인했다. 기강이 서서히 느슨해지고 있다.'); }
+          },
+        ]
+      },
+    ],
+    letter: [
+      {
+        id:'pirke_provoke', label:'도발', loc:'서신 접수실', avatar:'⚔️', speaker:'피르케의 사절', role:'동쪽 백작 사절',
+        text:`피르케의 사절이 오만한 표정으로 서신을 내밀었다.\n\n<em>"백작님, 우리 주군께서 국경 마을 두 곳의 세금 징수권을 요구하십니다."</em>\n\n<span class='danger'>이것은 명백한 도발이다.</span>`,
+        choices: [
+          { icon:'⚔️', text:'강경히 거절하고 병력을 국경에 보낸다', hint:'전투 판정. 성공 시 피르케 관계-, 위신+', statKey:'combat', threshold:18,
+            success: s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-8); addLog('강경 대응 성공. 피르케가 물러섰다.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-5); s.baseFood -= 10; addLog('병력 충돌에서 밀렸다. 식량이 줄었다.'); }
+          },
+          { icon:'🤝', text:'협상을 제안한다', hint:'외교 판정. 성공 시 현상 유지', statKey:'diplomacy', threshold:14,
+            success: s => { addLog('협상으로 도발을 무력화했다. 현상 유지.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-3); addLog('협상이 실패했다. 피르케가 유리한 조건을 강요했다.'); s.baseGold -= 15; }
+          },
+          { icon:'💰', text:'세금 징수권 하나를 양보한다', hint:'판정 없음. 세수 감소, 피르케 관계 소폭 +',
+            fn: s => { s.baseGold -= 20; s.npcs.pirke.rel = Math.min(100,s.npcs.pirke.rel+5); addLog('양보로 분쟁을 피했다. 세수가 줄었다.'); }
+          },
+        ]
+      },
+    ],
+    trial: [
+      {
+        id:'petition', label:'청원', loc:'카스텔 재판소', avatar:'👨', speaker:'농부 대표', role:'백성 대표단',
+        text:`농부들이 무릎을 꿇고 청원한다.\n\n<em>"백작님, 관리 하나가 세금을 두 배로 걷고 있습니다. 저희는 굶을 판입니다."</em>`,
+        choices: [
+          { icon:'⚖️', text:'관리를 즉시 처벌한다', hint:'관리 판정. 성공 시 충성도 대폭 +', statKey:'admin', threshold:12,
+            success: s => { s.domain.loyalty = Math.min(100,s.domain.loyalty+12); addLog('부패한 관리를 처벌했다. 충성도가 크게 올랐다.', true); },
+            fail:    s => { s.domain.loyalty = Math.min(100,s.domain.loyalty+5); addLog('처벌을 시도했으나 증거가 부족했다. 충성도 소폭 상승.'); }
+          },
+          { icon:'💰', text:'보상금을 지급하고 마무리한다', hint:'판정 없음. 세수 소비, 충성도 소폭 +',
+            fn: s => { s.baseGold -= 20; s.domain.loyalty = Math.min(100,s.domain.loyalty+6); addLog('보상금으로 무마했다. 근본 해결은 안 됐다.'); }
+          },
+          { icon:'🌑', text:'청원을 무시한다', hint:'판정 없음. 충성도 -',
+            fn: s => { s.domain.loyalty = Math.max(0,s.domain.loyalty-10); addLog('청원을 무시했다. 충성도가 떨어졌다.'); }
+          },
+        ]
+      },
+    ],
+    spy: [
+      {
+        id:'spy_caught', label:'첩자 발각', loc:'피르케 영지 인근', avatar:'🌑', speaker:'생존 첩자', role:'카스텔 첩보원',
+        text:`간신히 돌아온 첩자가 떨며 보고한다.\n\n<em>"백작님, 동료가 잡혔습니다. 피르케 백작이 고문 중입니다. 우리 이름이 나올 것 같습니다."</em>`,
+        choices: [
+          { icon:'🌑', text:'첩자를 구출할 팀을 보낸다', hint:'계책 판정. 성공 시 첩자 구출, 피르케 관계-', statKey:'intrigue', threshold:16,
+            success: s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-5); addLog('구출 성공. 피르케는 의심하지만 증거가 없다.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-15); addLog('구출 실패. 피르케가 배후를 알게 됐다.'); }
+          },
+          { icon:'✉️', text:'피르케에게 사절을 보내 잡아떼기한다', hint:'외교 판정. 성공 시 현상 유지', statKey:'diplomacy', threshold:15,
+            success: s => { addLog('능숙하게 부인했다. 피르케가 의심하지만 넘어갔다.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-10); addLog('잡아떼기에 실패했다. 피르케의 적개심이 커졌다.'); }
+          },
+          { icon:'🌙', text:'첩자를 포기하고 모른 척한다', hint:'판정 없음. 첩자 희생, 피르케 관계 소폭-',
+            fn: s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-5); addLog('첩자를 포기했다. 냉혹한 선택이었다.'); }
+          },
+        ]
+      },
+    ],
+    feast: [
+      {
+        id:'feast_accident', label:'연회 사고', loc:'카스텔 성 대연회장', avatar:'🍷', speaker:'집사장 에드먼드', role:'카스텔 성 집사',
+        text:`연회 도중 집사가 다급히 귓속말한다.\n\n<em>"백작님, 코르쿠스 백작이 술에 취해 실언을 했습니다. 피르케 백작의 아내를 모욕했습니다. 지금 분위기가 험악합니다."</em>`,
+        choices: [
+          { icon:'🤝', text:'중재에 나선다', hint:'외교 판정. 성공 시 양측 관계 +, 위신 +', statKey:'diplomacy', threshold:14,
+            success: s => { s.npcs.pirke.rel = Math.min(100,s.npcs.pirke.rel+5); s.npcs.corcus.rel = Math.min(100,s.npcs.corcus.rel+5); addLog('능숙하게 중재했다. 양측 모두 감사해했다.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-5); s.npcs.corcus.rel = Math.max(0,s.npcs.corcus.rel-5); addLog('중재가 실패했다. 두 영주 모두 기분이 상했다.'); }
+          },
+          { icon:'🍷', text:'연회를 강제로 끝낸다', hint:'관리 판정. 성공 시 사태 진정', statKey:'admin', threshold:10,
+            success: s => { addLog('연회를 신속히 끝냈다. 사태가 무사히 마무리됐다.', true); },
+            fail:    s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-3); addLog('연회 종료 과정이 어색했다. 피르케가 기분 나빠했다.'); }
+          },
+          { icon:'🌙', text:'못 본 척 한다', hint:'판정 없음. 두 영주 관계 모두 -',
+            fn: s => { s.npcs.pirke.rel = Math.max(0,s.npcs.pirke.rel-5); s.npcs.corcus.rel = Math.max(0,s.npcs.corcus.rel-5); addLog('방관했다. 양측 모두 오웬이 무능하다고 생각한다.'); }
+          },
+        ]
+      },
+    ],
+  },
+
+  // 월드 이벤트
+  world: [
+    {
+      id:'famine', minWeek:8, label:'흉작', loc:'카스텔 영지 농촌', avatar:'🌾', speaker:'농지 감독관', role:'영지 감독관',
+      text:`감독관이 어두운 얼굴로 보고한다.\n\n<em>"백작님, 올해 수확이 크게 줄었습니다. 식량 비축분이 한 달 버티기도 어렵습니다."</em>`,
+      choices: [
+        { icon:'💰', text:'코르쿠스에게 식량을 구입한다', hint:'외교 판정. 성공 시 세수 소비로 식량 확보', statKey:'diplomacy', threshold:12,
+          success: s => { s.baseGold -= 40; s.baseFood += 20; s.npcs.corcus.rel = Math.min(100,s.npcs.corcus.rel+5); addLog('코르쿠스에게 식량을 구입했다. 위기를 넘겼다.', true); },
+          fail:    s => { s.baseGold -= 60; s.baseFood += 10; addLog('비싼 값에 겨우 구입했다. 세수가 많이 줄었다.'); }
+        },
+        { icon:'📋', text:'배급제를 실시한다', hint:'관리 판정. 성공 시 충성도 유지', statKey:'admin', threshold:14,
+          success: s => { s.domain.loyalty = Math.max(0,s.domain.loyalty-5); addLog('배급제를 효율적으로 운영했다. 불만이 적었다.', true); },
+          fail:    s => { s.domain.loyalty = Math.max(0,s.domain.loyalty-15); s.baseFood -= 15; addLog('배급제가 혼란스러웠다. 백성들의 불만이 커졌다.'); }
+        },
+        { icon:'🌑', text:'약한 마을을 포기하고 핵심 영지만 지킨다', hint:'판정 없음. 식량 소폭 안정, 충성도 -',
+          fn: s => { s.domain.loyalty = Math.max(0,s.domain.loyalty-20); addLog('약한 마을을 버렸다. 잔인한 선택이 충성도를 갉아먹었다.'); }
+        },
+      ]
+    },
+    {
+      id:'king_ill', minWeek:16, label:'왕의 위독', loc:'에르덴 왕성', avatar:'👑', speaker:'왕실 전령', role:'팔제스 3세 전령',
+      text:`왕실 전령이 창백한 얼굴로 도착했다.\n\n<em>"세 백작님께 알립니다. 팔제스 3세 폐하의 병세가 위중합니다. 후계자를 정하지 못하셨습니다."</em>\n\n<span class='danger'>왕위 계승 전쟁의 냄새가 난다.</span>`,
+      choices: [
+        { icon:'👑', text:'왕위 계승을 공식 지지하며 연대를 구축한다', hint:'외교 판정. 성공 시 동맹 형성', statKey:'diplomacy', threshold:16,
+          success: s => { s.npcs.corcus.rel = Math.min(100,s.npcs.corcus.rel+15); addLog('코르쿠스와 연대했다. 계승 전쟁 준비를 시작했다.', true); },
+          fail:    s => { addLog('연대 시도가 실패했다. 코르쿠스는 눈치를 보고 있다.'); }
+        },
+        { icon:'⚔️', text:'병력을 증강하고 때를 기다린다', hint:'전투 판정. 성공 시 병력 +', statKey:'combat', threshold:13,
+          success: s => { s.baseTroop += 15; addLog('병력을 늘렸다. 무력으로 기회를 잡을 준비가 됐다.', true); },
+          fail:    s => { s.baseGold -= 20; addLog('병력 증강에 예산이 많이 들었다.'); }
+        },
+        { icon:'🌙', text:'중립을 지키며 상황을 관망한다', hint:'판정 없음. 안전하지만 기회를 놓칠 수 있다',
+          fn: s => { addLog('중립을 선택했다. 당분간 안전하다.'); }
+        },
+      ]
+    },
+    {
+      id:'plague', minWeek:24, label:'역병', loc:'카스텔 영지', avatar:'💀', speaker:'영지 의사', role:'성 의사',
+      text:`의사가 떨리는 목소리로 보고한다.\n\n<em>"백작님, 동쪽 마을에서 역병이 퍼지고 있습니다. 빠르게 조치하지 않으면 영지 전체로 번질 것입니다."</em>`,
+      choices: [
+        { icon:'📖', text:'학자를 불러 치료법을 구한다', hint:'학습 판정. 성공 시 피해 최소화', statKey:'learning', threshold:14,
+          success: s => { s.baseFood -= 10; addLog('학자의 도움으로 역병을 최소화했다.', true); },
+          fail:    s => { s.baseTroop -= 15; s.domain.loyalty = Math.max(0,s.domain.loyalty-10); addLog('역병이 퍼졌다. 병력과 충성도가 떨어졌다.'); }
+        },
+        { icon:'🛡', text:'감염 마을을 격리한다', hint:'관리 판정. 성공 시 확산 방지', statKey:'admin', threshold:15,
+          success: s => { s.domain.loyalty = Math.max(0,s.domain.loyalty-5); addLog('신속한 격리로 역병 확산을 막았다. 충성도 소폭 감소.', true); },
+          fail:    s => { s.baseTroop -= 20; s.baseFood -= 15; s.domain.loyalty = Math.max(0,s.domain.loyalty-15); addLog('격리가 늦었다. 역병이 영지 전체로 퍼졌다.'); }
+        },
+        { icon:'🙏', text:'교회에 도움을 청한다', hint:'판정 없음. 세수 소비, 충성도 유지',
+          fn: s => { s.baseGold -= 30; addLog('교회의 도움으로 민심을 달랬다. 세수가 줄었다.'); }
+        },
+      ]
+    },
+  ]
+};
+
+let firedWorldEvents = new Set();
+
+// ═══════════════════════════════════
+// RENDER
+// ═══════════════════════════════════
+const STAT_META = {
+  combat:    { icon:'⚔️', label:'전투' },
+  diplomacy: { icon:'🤝', label:'외교' },
+  intrigue:  { icon:'🌑', label:'계책' },
+  admin:     { icon:'📋', label:'관리' },
+  learning:  { icon:'📖', label:'학습' },
+};
+const OUTLOOK_META = {
+  combat:    { icon:'⚔️', label:'전투' },
+  diplomacy: { icon:'🤝', label:'외교' },
+  intrigue:  { icon:'🌑', label:'계책' },
+  admin:     { icon:'📋', label:'관리' },
+  learning:  { icon:'📖', label:'학습' },
+};
+
+function renderDate() {
+  const seasons = ['겨울','겨울','봄','봄','봄','여름','여름','여름','가을','가을','가을','겨울'];
+  const season = seasons[G.month-1];
+  document.getElementById('dateTxt').textContent = `${G.year}년 ${G.month}월 · ${season}`;
+  document.getElementById('weekTxt').textContent = `${G.week}주차 · 총 ${G.totalWeeks}주 경과`;
 }
 
 function renderStats() {
-  const stats = ['combat','speech','intel','fame'];
-  stats.forEach(s => {
-    const v = G[s];
-    document.getElementById(`s-${s}`).textContent = v;
-    const pipRow = document.getElementById(`pip-${s}`);
-    pipRow.innerHTML = '';
-    const total = 10;
-    const filled = Math.round(v / 10);
-    for (let i = 0; i < total; i++) {
-      const pip = document.createElement('div');
-      pip.className = 'pip' + (i >= filled ? ' empty' : '');
-      pipRow.appendChild(pip);
-    }
-  });
+  const body = document.getElementById('statsBody');
+  let html = '';
+  for (const [key, meta] of Object.entries(STAT_META)) {
+    const val = G.stats[key];
+    const pct = (val / 50) * 100;
+    const isOutlook = G.outlook.type === key;
+    html += `<div class="stat-row">
+      <span class="stat-icon">${meta.icon}</span>
+      <span class="stat-name" style="${isOutlook?'color:var(--gold-light);':''}">${meta.label}</span>
+      <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
+      <span class="stat-num">${val}</span>
+    </div>`;
+  }
+  // 인생관
+  const om = OUTLOOK_META[G.outlook.type];
+  const stars = '★'.repeat(G.outlook.stars) + '☆'.repeat(4-G.outlook.stars);
+  html += `<div style="margin-top:8px;padding-top:6px;border-top:1px solid rgba(201,151,58,0.1);font-size:0.62rem;color:var(--gold-dark);font-family:'Cinzel',serif;">
+    인생관: ${om.icon} ${om.label} ${stars}
+  </div>`;
+  // 건강/나이
+  document.getElementById('ageDisplay').textContent = `${G.age}세 · 건강 ${G.health}`;
+  body.innerHTML = html;
+}
+
+function renderDomain() {
+  document.getElementById('devVal').textContent = G.domain.dev;
+  document.getElementById('devBar').style.width = Math.min(100, G.domain.dev * 10) + '%';
+  document.getElementById('loyVal').textContent = G.domain.loyalty;
+  document.getElementById('loyBar').style.width = G.domain.loyalty + '%';
+
+  const res = getResources();
+  const gEl = document.getElementById('resGold');
+  const fEl = document.getElementById('resFood');
+  const tEl = document.getElementById('resTroop');
+  const dEl = document.getElementById('resDef');
+  gEl.textContent = res.gold;
+  fEl.textContent = res.food;
+  tEl.textContent = res.troop;
+  dEl.textContent = res.def;
+  gEl.className = 'res-val' + (res.gold < 50 ? ' danger' : res.gold > 150 ? ' good' : '');
+  fEl.className = 'res-val' + (res.food < 60 ? ' danger' : '');
+  tEl.className = 'res-val' + (res.troop < 40 ? ' danger' : '');
+
+  // 후계자
+  const heirSec = document.getElementById('heirSection');
+  if (G.heir) {
+    const ol = G.heir.outlook ? `· ${OUTLOOK_META[G.heir.outlook.type].label} ${G.heir.outlook.stars}성` : '· 교육 중';
+    heirSec.innerHTML = `<div class="heir-row"><span class="heir-avatar">👦</span><div class="heir-info"><span class="heir-name">후계자 ${G.heir.name}</span><span class="heir-detail">${G.heir.age}세 ${ol}</span></div></div>`;
+  } else {
+    heirSec.innerHTML = `<span class="no-heir">⚠ 후계자 없음</span>`;
+  }
 }
 
 function renderNPCs() {
-  const row = document.getElementById('npcRow');
-  row.innerHTML = '';
+  const strip = document.getElementById('npcStrip');
+  strip.innerHTML = '';
   for (const [key, npc] of Object.entries(G.npcs)) {
     const rel = npc.rel;
-    const cls = rel >= 65 ? 'positive' : rel <= 30 ? 'negative' : '';
-    const relLabel = rel >= 65 ? `우호(${rel})` : rel <= 30 ? `경계(${rel})` : `중립(${rel})`;
-    const chip = document.createElement('div');
-    chip.className = `npc-chip ${cls}`;
-    chip.innerHTML = `<div class="npc-avatar">${npc.avatar}</div><div class="npc-info"><span class="npc-name">${npc.name}</span><span class="npc-rel">${relLabel}</span></div>`;
-    chip.onclick = () => showNpcPopup(key);
-    row.appendChild(chip);
+    const cls = rel >= 65 ? 'allied' : rel <= 30 ? 'hostile' : '';
+    const relLabel = rel >= 65 ? `우호(${rel})` : rel <= 30 ? `적대(${rel})` : `중립(${rel})`;
+    const fillCls = rel <= 30 ? 'hostile-fill' : '';
+    const card = document.createElement('div');
+    card.className = `npc-card ${cls}`;
+    card.innerHTML = `<div class="npc-avatar">${npc.avatar}</div><div class="npc-info"><span class="npc-name">${npc.name}</span><span class="npc-rel-label">${relLabel}</span><div class="npc-rel-bar"><div class="npc-rel-fill ${fillCls}" style="width:${rel}%"></div></div></div>`;
+    card.onclick = () => showNpcPopup(key);
+    strip.appendChild(card);
   }
 }
 
-function renderScenario() {
-  const idx = Math.min(G.scenarioDay, SCENARIOS.length - 1);
-  const sc = SCENARIOS[idx];
-  document.getElementById('sceneLabel').textContent = sc.label;
-  document.getElementById('sceneLocation').textContent = sc.location;
-  document.getElementById('speakerAvatar').textContent = sc.avatar;
-  document.getElementById('speakerName').textContent = sc.name;
-  document.getElementById('speakerRole').textContent = sc.role;
-  document.getElementById('journalBody').innerHTML = sc.text.replace(/\n/g, '<br>');
-
-  // world ticker
-  const ticker = document.getElementById('worldTicker');
-  ticker.innerHTML = sc.worldState.map((w,i) =>
-    `<span class="ticker-item${i===0?' active':''}">${w}</span>`
-  ).join('');
-
-  // actions
-  renderActions(sc.actions);
-
-  const j = document.getElementById('journal');
-  j.classList.remove('flash');
-  void j.offsetWidth;
-  j.classList.add('flash');
+function renderSchedule() {
+  const daysEl = document.getElementById('scheduleDays');
+  daysEl.innerHTML = '';
+  let filled = 0;
+  for (const entry of G.schedule) {
+    const a = ACTIONS[entry.actionKey];
+    for (let i = 0; i < entry.days; i++) {
+      const slot = document.createElement('div');
+      slot.className = 'day-slot filled';
+      slot.innerHTML = `<span class="day-num">${filled+1}</span><span class="day-icon">${a.icon}</span>`;
+      slot.title = a.name;
+      slot.onclick = () => removeScheduleEntry(entry.actionKey);
+      daysEl.appendChild(slot);
+      filled++;
+    }
+  }
+  for (let i = filled; i < 7; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'day-slot empty';
+    slot.innerHTML = `<span class="day-num">${i+1}</span><span style="font-size:0.6rem;color:rgba(201,151,58,0.2);">—</span>`;
+    daysEl.appendChild(slot);
+  }
+  const remain = 7 - G.scheduleDaysUsed;
+  document.getElementById('daysRemain').innerHTML = `남은 일수: <strong style="color:var(--gold-light);">${remain}</strong>일`;
+  document.getElementById('confirmBtn').disabled = remain !== 0;
+  document.getElementById('schedInfo').textContent = remain === 0 ? '✓ 확정 가능' : `${remain}일 남음`;
 }
 
-function renderActions(actionKeys) {
-  const list = document.getElementById('actionList');
-  list.innerHTML = '';
-  actionKeys.forEach(key => {
-    const a = ACTIONS[key];
-    if (!a) return;
+function renderActionList() {
+  // 탭
+  const catsEl = document.getElementById('actionCats');
+  catsEl.innerHTML = '';
+  CATS.forEach(c => {
     const btn = document.createElement('button');
-    btn.className = 'action-btn' + (G.usedActions.has(key) ? ' used-today' : '') + (G.ap < a.cost ? ' spent' : '');
-    btn.innerHTML = `
-      <span class="action-icon">${a.icon}</span>
-      <span class="action-content">
-        <span class="action-name">${a.name}</span>
-        <span class="action-desc">${a.desc}</span>
-      </span>
-      <span class="action-cost">${'<div class="cost-dot"></div>'.repeat(a.cost)}</span>
-    `;
-    btn.onclick = () => doAction(key);
-    list.appendChild(btn);
+    btn.className = 'cat-btn' + (activeCat === c.key ? ' active' : '');
+    btn.textContent = c.label;
+    btn.onclick = () => { activeCat = c.key; renderActionList(); };
+    catsEl.appendChild(btn);
   });
-}
 
-// ═══════════════════════════════════════════
-// ACTIONS
-// ═══════════════════════════════════════════
-function doAction(key) {
-  if (G.gameOver) return;
-  const a = ACTIONS[key];
-  if (!a || G.ap < a.cost || G.usedActions.has(key)) return;
+  const listEl = document.getElementById('actionList');
+  listEl.innerHTML = '';
+  const remain = 7 - G.scheduleDaysUsed;
 
-  G.ap -= a.cost;
-  G.usedActions.add(key);
-  a.fn();
+  for (const [key, a] of Object.entries(ACTIONS)) {
+    if (activeCat !== 'all' && a.cat !== activeCat) continue;
+    const canFit = a.solo ? G.scheduleDaysUsed === 0 && a.days <= 7 : a.days <= remain;
+    const alreadySolo = G.schedule.some(e => ACTIONS[e.actionKey].solo);
+    const unavail = !canFit || (a.solo && G.scheduleDaysUsed > 0) || alreadySolo;
 
-  renderAP();
-  renderStats();
-  renderNPCs();
-
-  // re-render action list with current ap
-  const idx = Math.min(G.scenarioDay, SCENARIOS.length - 1);
-  renderActions(SCENARIOS[idx].actions);
-
-  // check ap exhausted → auto next day prompt
-  if (G.ap <= 0) {
-    document.getElementById('nextDayBtn').style.boxShadow = '0 0 10px rgba(196,135,58,0.5)';
+    const item = document.createElement('div');
+    item.className = 'action-item' + (unavail ? ' unavailable' : '');
+    const pips = '<div class="day-pip"></div>'.repeat(a.days);
+    item.innerHTML = `<span class="action-emoji">${a.icon}</span><span class="action-content"><span class="action-name">${a.name}</span><span class="action-desc">${a.desc}</span></span><span class="action-days">${pips}</span>`;
+    if (!unavail) item.onclick = () => addScheduleEntry(key);
+    listEl.appendChild(item);
   }
-
-  checkWorldEvents();
 }
 
-function nextDay() {
-  if (G.gameOver) return;
-  // advance time
-  G.day++;
-  G.totalDays++;
-  if (G.day > 30) { G.day = 1; G.month++; }
-  if (G.month > 12) { G.month = 1; G.year++; }
+// ═══════════════════════════════════
+// SCHEDULE LOGIC
+// ═══════════════════════════════════
+function addScheduleEntry(key) {
+  const a = ACTIONS[key];
+  const remain = 7 - G.scheduleDaysUsed;
+  if (a.days > remain) return;
+  if (a.solo && G.scheduleDaysUsed > 0) return;
+  G.schedule.push({ actionKey: key, days: a.days });
+  G.scheduleDaysUsed += a.days;
+  renderSchedule();
+  renderActionList();
+}
 
-  G.ap = G.apMax;
-  G.usedActions.clear();
-  document.getElementById('nextDayBtn').style.boxShadow = '';
+function removeScheduleEntry(key) {
+  const idx = G.schedule.findIndex(e => e.actionKey === key);
+  if (idx === -1) return;
+  G.scheduleDaysUsed -= G.schedule[idx].days;
+  G.schedule.splice(idx, 1);
+  renderSchedule();
+  renderActionList();
+}
 
-  // NPC schedules
-  for (const npc of Object.values(G.npcs)) {
-    if (npc.schedule && npc.schedule.length > 0) {
-      const activity = npc.schedule[G.totalDays % npc.schedule.length];
-      // passive rel drift
-      if (activity === '대화' || activity === '막사 회의') npc.rel = Math.min(100, npc.rel + 1);
+function confirmSchedule() {
+  if (G.scheduleDaysUsed !== 7) return;
+  if (G.currentEvent) return;
+
+  // 행동 처리
+  const actionsDone = [];
+  for (const entry of G.schedule) {
+    actionsDone.push(entry.actionKey);
+    const a = ACTIONS[entry.actionKey];
+
+    // 능력치 카운트
+    if (a.statKey) {
+      G.statCount[a.statKey]++;
+      if (G.statCount[a.statKey] >= 30) {
+        G.statCount[a.statKey] = 0;
+        G.stats[a.statKey] = Math.min(50, G.stats[a.statKey] + 1);
+        addLog(`${STAT_META[a.statKey].label} 능력이 향상됐다. (${G.stats[a.statKey]})`, true);
+      }
+    }
+
+    // 특수 행동
+    if (entry.actionKey === 'admin') {
+      // 개발도 카운트 (별도 관리)
+      G._devCount = (G._devCount||0) + 1;
+      if (G._devCount >= 8) { G._devCount = 0; G.domain.dev = Math.min(10, G.domain.dev+1); addLog(`영지 개발도가 ${G.domain.dev}로 올랐다.`, true); }
+    }
+    if (entry.actionKey === 'rest') {
+      G.health = Math.min(100, G.health + 5);
+    }
+    if (entry.actionKey === 'heirEdu' && G.heir && !G.heir.outlook) {
+      const focusKeys = Object.keys(G.heir.eduFocus);
+      const focusKey = entry.statKey || 'admin';
+      G.heir.eduFocus[G.outlook.type] = (G.heir.eduFocus[G.outlook.type]||0) + 1;
+      // 인생관 확정 (18세)
+      if (G.heir.age >= 18) confirmHeirOutlook();
     }
   }
 
-  // advance scenario
-  if (G.scenarioDay < SCENARIOS.length - 1) G.scenarioDay++;
+  // 시간 경과
+  G.week++;
+  G.totalWeeks++;
+  if (G.week > 4) { G.week = 1; G.month++; }
+  if (G.month > 12) { G.month = 1; G.year++; }
 
-  G.world.unrest = Math.min(100, G.world.unrest + 2);
+  // 나이
+  if (G.totalWeeks % 52 === 0) {
+    G.age++;
+    if (G.heir) G.heir.age++;
+    if (G.heir && G.heir.age >= 18 && !G.heir.outlook) confirmHeirOutlook();
+    G.health = Math.max(0, G.health - (G.age > 50 ? 5 : 1));
+    addLog(`${G.age}세가 됐다.`);
+    if (G.age > 55 && G.health < 30) {
+      addLog('건강이 급격히 나빠지고 있다.', true);
+    }
+  }
+
+  // 사망 체크
+  if (G.health <= 0 || G.age >= 75) {
+    if (!G.heir) { endGame('no_heir'); return; }
+    succeedHeir();
+    return;
+  }
+
+  // 게임오버 체크
+  if (G.domain.loyalty <= 0) { endGame('revolt'); return; }
+
+  // 트리거 이벤트 체크
+  for (const actionKey of actionsDone) {
+    const pool = EVENT_POOL.trigger[actionKey];
+    if (pool && Math.random() < 0.55) {
+      const ev = pool[Math.floor(Math.random() * pool.length)];
+      G.pendingEvents.push(ev);
+    }
+  }
+
+  // 월드 이벤트 체크
+  for (const wev of EVENT_POOL.world) {
+    if (!firedWorldEvents.has(wev.id) && G.totalWeeks >= wev.minWeek && Math.random() < 0.3) {
+      G.pendingEvents.push(wev);
+      firedWorldEvents.add(wev.id);
+    }
+  }
+
+  // 스케줄 초기화
+  G.schedule = [];
+  G.scheduleDaysUsed = 0;
 
   renderDate();
-  renderAP();
   renderStats();
+  renderDomain();
   renderNPCs();
-  renderScenario();
-}
+  renderSchedule();
+  renderActionList();
 
-// ═══════════════════════════════════════════
-// WORLD EVENTS
-// ═══════════════════════════════════════════
-function checkWorldEvents() {
-  if (G.world.nogaiSuspicion >= 60 && G.scenarioDay < 5) {
-    addLog('⚠️ 노가이의 의심이 위험 수위에 달했다. 다음 대화가 중요하다.', true);
-  }
-  if (G.world.unrest >= 50) {
-    addLog('⚠️ 원정군 내 동요가 심각해지고 있다.', true);
+  // 이벤트 처리
+  if (G.pendingEvents.length > 0) {
+    showEvent(G.pendingEvents.shift());
   }
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
+// EVENTS
+// ═══════════════════════════════════
+function showEvent(ev) {
+  G.currentEvent = ev;
+  document.getElementById('schedulePanel').style.opacity = '0.3';
+  document.getElementById('schedulePanel').style.pointerEvents = 'none';
+  const ep = document.getElementById('eventPanel');
+  ep.style.display = '';
+  document.getElementById('eventLabel').textContent = ev.label;
+  document.getElementById('eventLoc').textContent = ev.loc;
+  document.getElementById('eventAvatar').textContent = ev.avatar;
+  document.getElementById('eventSpeaker').textContent = ev.speaker;
+  document.getElementById('eventRole').textContent = ev.role;
+  document.getElementById('eventBody').innerHTML = ev.text.replace(/\n/g,'<br>');
+
+  const cw = document.getElementById('choicesWrap');
+  cw.innerHTML = '';
+  ev.choices.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    let hintHtml = '';
+    if (c.statKey) {
+      const val = G.stats[c.statKey];
+      const outlook_bonus = G.outlook.type === c.statKey ? G.outlook.stars : 0;
+      const total = val + outlook_bonus;
+      const chance = Math.min(95, Math.max(10, Math.round(((total - c.threshold) / c.threshold) * 60 + 50)));
+      hintHtml = `<span class="choice-hint">${c.hint} · ${STAT_META[c.statKey].label} ${total} vs ${c.threshold} (성공률 약 ${chance}%)</span>`;
+    } else {
+      hintHtml = `<span class="choice-hint">${c.hint||''}</span>`;
+    }
+    btn.innerHTML = `<span class="choice-icon">${c.icon}</span><span class="choice-text">${c.text}${hintHtml}</span>`;
+    btn.onclick = () => resolveChoice(c);
+    cw.appendChild(btn);
+  });
+
+  ep.classList.add('flash-border');
+  ep.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function resolveChoice(c) {
+  if (c.statKey) {
+    const val = G.stats[c.statKey];
+    const bonus = G.outlook.type === c.statKey ? G.outlook.stars : 0;
+    const total = val + bonus;
+    const chance = Math.min(0.95, Math.max(0.1, ((total - c.threshold) / c.threshold) * 0.6 + 0.5));
+    if (Math.random() < chance) {
+      if (c.success) c.success(G);
+    } else {
+      if (c.fail) c.fail(G);
+    }
+  } else {
+    if (c.fn) c.fn(G);
+  }
+
+  G.currentEvent = null;
+  document.getElementById('eventPanel').style.display = 'none';
+  document.getElementById('schedulePanel').style.opacity = '';
+  document.getElementById('schedulePanel').style.pointerEvents = '';
+
+  renderStats();
+  renderDomain();
+  renderNPCs();
+
+  if (G.domain.loyalty <= 0) { endGame('revolt'); return; }
+
+  if (G.pendingEvents.length > 0) {
+    setTimeout(() => showEvent(G.pendingEvents.shift()), 400);
+  }
+}
+
+// ═══════════════════════════════════
+// 후계자
+// ═══════════════════════════════════
+function confirmHeirOutlook() {
+  if (!G.heir || G.heir.outlook) return;
+  const focus = G.heir.eduFocus;
+  let best = 'admin', bestVal = -1;
+  for (const [k,v] of Object.entries(focus)) {
+    if (v > bestVal) { bestVal = v; best = k; }
+  }
+  const stars = Math.min(4, Math.max(1, Math.floor(bestVal / 3) + 1));
+  G.heir.outlook = { type: best, stars };
+  addLog(`후계자 ${G.heir.name}의 인생관이 확정됐다. ${OUTLOOK_META[best].label} ${stars}성`, true);
+}
+
+function succeedHeir() {
+  addLog(`오웬 백작이 ${G.age}세로 생을 마쳤다. 후계자 ${G.heir.name}이 백작위를 계승한다.`, true);
+  const newOutlook = G.heir.outlook || { type: 'admin', stars: 1 };
+  G.stats = { combat:5, diplomacy:5, intrigue:5, admin:5, learning:5 };
+  G.statCount = { combat:0, diplomacy:0, intrigue:0, admin:0, learning:0 };
+  G.outlook = newOutlook;
+  G.age = 18;
+  G.health = 90;
+  // NPC 관계 초기화
+  for (const npc of Object.values(G.npcs)) npc.rel = 30 + Math.floor(Math.random()*20);
+  G.heir = null;
+  renderStats();
+  renderDomain();
+  renderNPCs();
+}
+
+// ═══════════════════════════════════
 // NPC POPUP
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 function showNpcPopup(key) {
   const npc = G.npcs[key];
-  document.getElementById('popupAvatar').textContent = npc.avatar;
-  document.getElementById('popupName').textContent = npc.name;
-  document.getElementById('popupRole').textContent = npc.role;
-  document.getElementById('popupBio').textContent = npc.bio;
-  const fill = document.getElementById('popupRelFill');
-  fill.style.width = npc.rel + '%';
+  document.getElementById('popAvatar').textContent = npc.avatar;
+  document.getElementById('popName').textContent = npc.name;
+  document.getElementById('popRole').textContent = npc.title;
+  document.getElementById('popBio').textContent = npc.bio;
   const rel = npc.rel;
-  fill.style.background = rel >= 65 ? 'linear-gradient(90deg,#1a6b2a,#2ea043)' :
-                           rel <= 30 ? 'linear-gradient(90deg,#6b1010,#c0392b)' :
-                           'linear-gradient(90deg,var(--steppe-dark),var(--steppe))';
-  document.getElementById('npcPopup').classList.add('show');
-}
-function closeNpcPopup(e) {
-  if (!e || e.target === document.getElementById('npcPopup')) {
-    document.getElementById('npcPopup').classList.remove('show');
-  }
+  const fill = document.getElementById('popRelFill');
+  fill.style.width = rel + '%';
+  fill.style.background = rel >= 65 ? 'linear-gradient(90deg,#2d5a27,#4a8c42)' : rel <= 30 ? 'linear-gradient(90deg,#6b1010,#b83232)' : 'linear-gradient(90deg,var(--gold-dark),var(--gold-light))';
+  const relTxt = rel >= 65 ? '우호적' : rel <= 30 ? '적대적' : '중립';
+  document.getElementById('popRelLabel').textContent = `관계도 ${rel} — ${relTxt}`;
+  const weekIdx = G.totalWeeks % (npc.schedule.length||1);
+  document.getElementById('popSchedule').textContent = `이번 주 일정: ${npc.schedule[weekIdx] || '—'}`;
+  document.getElementById('npcOverlay').classList.add('show');
 }
 
-// ═══════════════════════════════════════════
+function closePopup(e, id) { if (e.target === document.getElementById(id)) closePopupById(id); }
+function closePopupById(id) { document.getElementById(id).classList.remove('show'); }
+
+// ═══════════════════════════════════
 // LOG
-// ═══════════════════════════════════════════
-function addLog(text, imp = false) {
+// ═══════════════════════════════════
+function addLog(text, imp=false) {
   G.log.unshift({ text, imp });
-  if (G.log.length > 8) G.log.pop();
+  if (G.log.length > 10) G.log.pop();
   const ll = document.getElementById('logList');
-  ll.innerHTML = G.log.map(e =>
-    `<div class="log-entry${e.imp?' imp':''}">${e.text}</div>`
-  ).join('');
+  ll.innerHTML = G.log.map(e => `<div class="log-entry${e.imp?' imp':''}">${e.text}</div>`).join('');
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // END GAME
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 const ENDINGS = {
-  bridge: {
-    icon: '🌉', title: '두 세계의 다리',
-    body: (g) => `코스탄다이 아나스타시오스는 노가이의 사절로 콘스탄티노폴리스에 발을 디딘다. 몽골인의 피와 비잔티움인의 이름을 동시에 지닌 그는, 어느 한쪽이 아닌 두 세계 모두에게 필요한 사람이 되었다.\n\n명성: ${g.fame} / 언변: ${g.speech}`
-  },
-  alone: {
-    icon: '🐺', title: '차간 치노드 — 혼자인 늑대',
-    body: (g) => `그는 노가이도, 비잔티움도 선택하지 않았다. 원정군을 떠나 스스로의 길을 간다. 그 길이 어디로 이어지는지는 아무도 모른다.\n\n위험하지만, 자유롭다.\n\n첩보: ${g.intel} / 무력: ${g.combat}`
-  },
-  diplomat: {
-    icon: '⚖️', title: '코스탄다이 조약',
-    body: (g) => `협상 능력으로 노가이에게서 전례 없는 자율권을 얻어냈다. 사절이 되되, 독립적인 판단을 보장받는 조건으로. 이 협상은 훗날 역사가 라시드 앗 딘의 기록에 남는다.\n\n명성: ${g.fame} / 언변: ${g.speech}`
-  },
-  failed: {
-    icon: '💀', title: '실패한 협상',
-    body: (g) => `언변이 부족했다. 노가이는 코스탄다이를 더 이상 신뢰하지 않기로 했다. 그는 원정군 내 감시 아래 놓이게 되었다.\n\n언변: ${g.speech} — 좀 더 높았어야 했다.`
-  },
+  no_heir: { icon:'💀', title:'대가 끊기다', body: g => `오웬 백작이 후계자 없이 세상을 떠났다. 카스텔 영지는 왕국에 귀속되었고, 오웬의 이름은 역사에서 지워졌다.` },
+  revolt:  { icon:'🔥', title:'반란으로 무너지다', body: g => `충성도가 바닥났다. 백성과 기사들이 들고 일어났다. 오웬 백작은 자신의 성에서 쫓겨났다.` },
 };
 
 function endGame(type) {
@@ -1199,24 +1229,29 @@ function endGame(type) {
 function restart() {
   document.getElementById('outcomeOverlay').classList.remove('show');
   document.getElementById('logList').innerHTML = '';
+  firedWorldEvents.clear();
   initGame();
   renderDate();
-  renderAP();
   renderStats();
+  renderDomain();
   renderNPCs();
-  renderScenario();
+  renderSchedule();
+  renderActionList();
+  addLog('1200년. 오웬 백작의 연대기가 시작됐다.', true);
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 initGame();
 renderDate();
-renderAP();
 renderStats();
+renderDomain();
 renderNPCs();
-renderScenario();
-addLog('1293년 봄. 원정은 시작되었다.', true);
+renderSchedule();
+renderActionList();
+addLog('1200년 봄. 에르덴 왕국, 팔제스 3세는 병상에 있다.', true);
+addLog('카스텔의 오웬 백작. 작은 영지, 큰 야망.');
 </script>
 </body>
 </html>
