@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>차간 치노드 — 코스탄다이의 일지</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --steppe: #c4873a;
+  --steppe-light: #e8b86d;
+  --steppe-dark: #7a4e18;
+  --byzantine: #1a3a5c;
+  --byzantine-light: #2e6da4;
+  --blood: #7a1a1a;
+  --blood-light: #c0392b;
+  --felt: #1c1208;
+  --felt-mid: #2e1f0a;
+  --felt-light: #3d2b10;
+  --parchment: #f0e6cc;
+  --parchment-dim: #c8b48a;
+  --snow: #e8eef5;
+  --shadow: rgba(0,0,0,0.7);
+  --glow-steppe: rgba(196,135,58,0.25);
+  --glow-byz: rgba(26,58,92,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--felt);
+  color: var(--parchment);
+  font-family: 'Noto Serif KR', serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(196,135,58,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 100%, rgba(26,58,92,0.15) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c4873a' fill-opacity='0.025'%3E%3Cpath d='M40 0 L50 30 L80 40 L50 50 L40 80 L30 50 L0 40 L30 30Z'/%3E%3C/g%3E%3C/svg%3E");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── HEADER ── */
+.hdr {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px 18px 10px;
+  text-align: center;
+  position: relative;
+}
+.hdr-symbol {
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+  color: var(--steppe);
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 6px;
+}
+.hdr-title {
+  font-family: 'Philosopher', serif;
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  font-weight: 700;
+  color: var(--steppe-light);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 30px var(--glow-steppe), 0 2px 6px var(--shadow);
+}
+.hdr-sub {
+  font-family: 'Philosopher', serif;
+  font-size: 0.75rem;
+  color: var(--steppe-dark);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  font-style: italic;
+}
+.hdr-line {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--steppe), transparent);
+  margin: 10px auto 0;
+}
+
+/* ── DATE BAR ── */
+.date-bar {
+  width: 100%;
+  max-width: 700px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.date-label {
+  font-family: 'Philosopher', serif;
+  font-size: 0.8rem;
+  color: var(--steppe);
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+.date-val {
+  font-size: 0.85rem;
+  color: var(--steppe-light);
+  font-weight: 600;
+}
+.ap-display {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.ap-label {
+  font-size: 0.65rem;
+  color: var(--steppe-dark);
+  font-family: 'Philosopher', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 3px;
+}
+.ap-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--steppe);
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 0 6px var(--glow-steppe);
+}
+.ap-dot.used {
+  background: var(--felt-light);
+  box-shadow: none;
+}
+
+/* ── STATS ── */
+.stats-row {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 0 18px 10px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(196,135,58,0.15);
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,135,58,0.4), transparent);
+}
+.stat-icon { font-size: 0.95rem; display: block; margin-bottom: 2px; }
+.stat-name {
+  font-size: 0.55rem;
+  font-family: 'Philosopher', serif;
+  color: var(--steppe-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 3px;
+}
+.stat-num {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Philosopher', serif;
+  color: var(--steppe-light);
+  display: block;
+}
+.stat-pip-row {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.pip {
+  width: 5px; height: 5px;
+  border-radius: 1px;
+  background: var(--steppe);
+  opacity: 0.8;
+  transition: all 0.4s;
+}
+.pip.empty { background: rgba(196,135,58,0.15); opacity: 1; }
+
+/* ── NPC ROW ── */
+.npc-row {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 18px 10px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.npc-row::-webkit-scrollbar { display: none; }
+.npc-chip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(196,135,58,0.12);
+  border-radius: 20px;
+  padding: 5px 10px 5px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.npc-chip:hover { border-color: rgba(196,135,58,0.4); background: rgba(196,135,58,0.06); }
+.npc-chip.positive { border-color: rgba(100,180,100,0.35); }
+.npc-chip.negative { border-color: rgba(192,57,43,0.35); }
+.npc-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--felt-light);
+  border: 1px solid rgba(196,135,58,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+}
+.npc-info { display: flex; flex-direction: column; }
+.npc-name { font-size: 0.7rem; color: var(--parchment); font-family: 'Philosopher', serif; }
+.npc-rel  { font-size: 0.6rem; color: var(--steppe-dark); }
+
+/* ── MAIN PANEL ── */
+.main-panel {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+/* ── JOURNAL ── */
+.journal {
+  background: linear-gradient(160deg, rgba(28,18,8,0.97), rgba(20,12,4,0.98));
+  border: 1px solid rgba(196,135,58,0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(196,135,58,0.08);
+}
+.journal-header {
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid rgba(196,135,58,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.journal-scene-label {
+  font-family: 'Philosopher', serif;
+  font-size: 0.6rem;
+  color: var(--steppe-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  flex: 1;
+}
+.journal-location {
+  font-size: 0.72rem;
+  color: var(--steppe);
+  font-style: italic;
+}
+
+.speaker-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px 8px;
+}
+.speaker-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--steppe-dark);
+  background: var(--felt-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(196,135,58,0.15);
+}
+.speaker-meta { flex: 1; }
+.speaker-name {
+  font-family: 'Philosopher', serif;
+  font-size: 0.88rem;
+  color: var(--steppe-light);
+  font-weight: 700;
+  display: block;
+}
+.speaker-role {
+  font-size: 0.65rem;
+  color: var(--steppe-dark);
+  font-style: italic;
+}
+
+.journal-body {
+  padding: 4px 16px 14px;
+  font-size: clamp(0.83rem, 3vw, 0.92rem);
+  line-height: 1.85;
+  color: var(--parchment);
+  min-height: 70px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.journal-body em { color: var(--steppe-light); font-style: italic; }
+.journal-body .tense { color: #c0392b; font-style: italic; }
+.journal-body .byz { color: #7eb3d8; font-style: italic; }
+
+/* ── WORLD STATE ── */
+.world-ticker {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  border-top: 1px solid rgba(196,135,58,0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.world-ticker::-webkit-scrollbar { display: none; }
+.ticker-item {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--steppe-dark);
+  background: rgba(196,135,58,0.05);
+  border: 1px solid rgba(196,135,58,0.1);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-style: italic;
+  white-space: nowrap;
+}
+.ticker-item.active { color: var(--steppe); border-color: rgba(196,135,58,0.25); }
+
+/* ── ACTIONS ── */
+.actions-panel {
+  background: linear-gradient(160deg, rgba(28,18,8,0.95), rgba(20,12,4,0.97));
+  border: 1px solid rgba(196,135,58,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.actions-header {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(196,135,58,0.08);
+  font-family: 'Philosopher', serif;
+  font-size: 0.62rem;
+  color: var(--steppe-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.next-day-btn {
+  background: rgba(196,135,58,0.12);
+  border: 1px solid rgba(196,135,58,0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--steppe-light);
+  font-family: 'Philosopher', serif;
+  font-size: 0.65rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.next-day-btn:hover { background: rgba(196,135,58,0.22); border-color: var(--steppe); }
+.next-day-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.action-list {
+  display: flex;
+  flex-direction: column;
+}
+.action-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 14px;
+  border: none;
+  border-bottom: 1px solid rgba(196,135,58,0.06);
+  background: transparent;
+  color: var(--parchment);
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(0.78rem, 3vw, 0.86rem);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.action-btn:last-child { border-bottom: none; }
+.action-btn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(196,135,58,0.1), transparent);
+  transition: width 0.2s;
+}
+.action-btn:hover::before { width: 100%; }
+.action-btn:hover { color: var(--parchment); }
+.action-btn:active { transform: scale(0.99); }
+.action-btn.spent { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+.action-btn.used-today {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.action-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.action-content { flex: 1; }
+.action-name { display: block; font-weight: 600; color: var(--parchment); margin-bottom: 2px; }
+.action-desc { display: block; font-size: 0.68rem; color: var(--parchment-dim); line-height: 1.4; }
+.action-cost {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.6rem;
+  color: var(--steppe-dark);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.cost-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--steppe); }
+
+/* ── LOG ── */
+.log-section {
+  width: 100%;
+  max-width: 700px;
+  padding: 4px 18px 24px;
+}
+.log-title {
+  font-family: 'Philosopher', serif;
+  font-size: 0.6rem;
+  color: var(--steppe-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.log-entry {
+  font-size: 0.7rem;
+  color: rgba(200,180,138,0.45);
+  padding: 3px 8px;
+  border-left: 1px solid rgba(196,135,58,0.12);
+  font-style: italic;
+  margin-bottom: 3px;
+  animation: logIn 0.3s ease;
+  line-height: 1.5;
+}
+.log-entry.imp {
+  color: rgba(196,135,58,0.65);
+  border-left-color: rgba(196,135,58,0.35);
+}
+@keyframes logIn { from{opacity:0;transform:translateX(-4px)} to{opacity:1;transform:none} }
+
+/* ── NPC POPUP ── */
+.npc-popup-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 24px;
+}
+.npc-popup-overlay.show { opacity: 1; pointer-events: all; }
+.npc-popup {
+  background: linear-gradient(160deg, #1e1208, #130c04);
+  border: 1px solid rgba(196,135,58,0.35);
+  border-radius: 14px;
+  padding: 22px 20px;
+  max-width: 380px;
+  width: 100%;
+  transform: scale(0.92);
+  transition: transform 0.3s;
+  box-shadow: 0 0 40px rgba(196,135,58,0.15);
+}
+.npc-popup-overlay.show .npc-popup { transform: scale(1); }
+.npc-popup-avatar { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+.npc-popup-name {
+  font-family: 'Philosopher', serif;
+  font-size: 1.1rem;
+  color: var(--steppe-light);
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  margin-bottom: 2px;
+}
+.npc-popup-role {
+  font-size: 0.72rem;
+  color: var(--steppe-dark);
+  text-align: center;
+  font-style: italic;
+  display: block;
+  margin-bottom: 12px;
+}
+.npc-popup-rel-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.npc-popup-rel-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s;
+}
+.npc-popup-bio {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--parchment-dim);
+  margin-bottom: 14px;
+}
+.npc-popup-close {
+  width: 100%;
+  padding: 10px;
+  background: rgba(196,135,58,0.1);
+  border: 1px solid rgba(196,135,58,0.25);
+  border-radius: 8px;
+  color: var(--steppe-light);
+  font-family: 'Philosopher', serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.npc-popup-close:hover { background: rgba(196,135,58,0.2); }
+
+/* ── OUTCOME ── */
+.outcome-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 300;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.5s;
+  padding: 24px;
+}
+.outcome-overlay.show { opacity: 1; pointer-events: all; }
+.outcome-card {
+  background: linear-gradient(160deg, #1e1208, #130c04);
+  border: 1px solid var(--steppe);
+  border-radius: 16px;
+  padding: 28px 22px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(196,135,58,0.2);
+  transform: scale(0.9);
+  transition: transform 0.4s;
+}
+.outcome-overlay.show .outcome-card { transform: scale(1); }
+.outcome-icon { font-size: 3rem; margin-bottom: 12px; display: block; }
+.outcome-title {
+  font-family: 'Philosopher', serif;
+  font-size: 1.3rem;
+  color: var(--steppe-light);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.outcome-body {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--parchment-dim);
+  margin-bottom: 20px;
+}
+.restart-btn {
+  background: linear-gradient(135deg, var(--steppe-dark), var(--steppe));
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  color: var(--felt);
+  font-family: 'Philosopher', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+.restart-btn:hover { transform: scale(1.04); }
+
+@keyframes pulse {
+  0%,100%{box-shadow:0 6px 30px rgba(0,0,0,0.6),inset 0 1px 0 rgba(196,135,58,0.08)}
+  50%{box-shadow:0 6px 30px rgba(0,0,0,0.6),0 0 20px rgba(196,135,58,0.15),inset 0 1px 0 rgba(196,135,58,0.08)}
+}
+.journal.flash { animation: pulse 0.5s ease; }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-symbol">᠊᠊᠊ ᠴᠠᠭᠠᠨ ᠴᠢᠨᠣᠳ ᠊᠊᠊</span>
+  <div class="hdr-title">코스탄다이의 일지</div>
+  <div class="hdr-sub">서방 원정 · 1293년</div>
+  <div class="hdr-line"></div>
+</header>
+
+<!-- DATE & AP -->
+<div class="date-bar">
+  <div>
+    <span class="date-label">현재 날짜</span>
+    <span class="date-val" id="dateVal">1293년 봄, 1월</span>
+  </div>
+  <div class="ap-display">
+    <span class="ap-label">행동력</span>
+    <div class="ap-dot" id="ap0"></div>
+    <div class="ap-dot" id="ap1"></div>
+    <div class="ap-dot" id="ap2"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-card">
+    <span class="stat-icon">🗡️</span>
+    <span class="stat-name">무력</span>
+    <span class="stat-num" id="s-combat">40</span>
+    <div class="stat-pip-row" id="pip-combat"></div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">🪶</span>
+    <span class="stat-name">언변</span>
+    <span class="stat-num" id="s-speech">55</span>
+    <div class="stat-pip-row" id="pip-speech"></div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">👁️</span>
+    <span class="stat-name">첩보</span>
+    <span class="stat-num" id="s-intel">45</span>
+    <div class="stat-pip-row" id="pip-intel"></div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">⚖️</span>
+    <span class="stat-name">명성</span>
+    <span class="stat-num" id="s-fame">30</span>
+    <div class="stat-pip-row" id="pip-fame"></div>
+  </div>
+</div>
+
+<!-- NPC ROW -->
+<div class="npc-row" id="npcRow"></div>
+
+<!-- MAIN -->
+<div class="main-panel">
+
+  <!-- JOURNAL -->
+  <div class="journal" id="journal">
+    <div class="journal-header">
+      <span class="journal-scene-label" id="sceneLabel">장면</span>
+      <span class="journal-location" id="sceneLocation">—</span>
+    </div>
+    <div class="speaker-row">
+      <div class="speaker-avatar" id="speakerAvatar">🌙</div>
+      <div class="speaker-meta">
+        <span class="speaker-name" id="speakerName">—</span>
+        <span class="speaker-role" id="speakerRole">—</span>
+      </div>
+    </div>
+    <div class="journal-body" id="journalBody"></div>
+    <div class="world-ticker" id="worldTicker"></div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions-panel">
+    <div class="actions-header">
+      <span>오늘 무엇을 하겠는가</span>
+      <button class="next-day-btn" id="nextDayBtn" onclick="nextDay()">다음 날 →</button>
+    </div>
+    <div class="action-list" id="actionList"></div>
+  </div>
+
+</div>
+
+<!-- LOG -->
+<div class="log-section">
+  <div class="log-title">◈ 원정 기록</div>
+  <div id="logList"></div>
+</div>
+
+<!-- NPC POPUP -->
+<div class="npc-popup-overlay" id="npcPopup" onclick="closeNpcPopup(event)">
+  <div class="npc-popup">
+    <div class="npc-popup-avatar" id="popupAvatar"></div>
+    <span class="npc-popup-name" id="popupName"></span>
+    <span class="npc-popup-role" id="popupRole"></span>
+    <div class="npc-popup-rel-bar">
+      <div class="npc-popup-rel-fill" id="popupRelFill" style="width:50%;background:var(--steppe)"></div>
+    </div>
+    <div class="npc-popup-bio" id="popupBio"></div>
+    <button class="npc-popup-close" onclick="closeNpcPopup()">닫기</button>
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="outcome-overlay" id="outcomeOverlay">
+  <div class="outcome-card">
+    <span class="outcome-icon" id="outIcon"></span>
+    <div class="outcome-title" id="outTitle"></div>
+    <div class="outcome-body" id="outBody"></div>
+    <button class="restart-btn" onclick="restart()">처음부터 다시</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let G = {};
+
+function initGame() {
+  G = {
+    // time
+    year: 1293,
+    season: '봄',
+    month: 1,      // 1~12
+    day: 1,        // each "day" = one turn
+    totalDays: 0,
+    ap: 3,         // action points per day
+    apMax: 3,
+    usedActions: new Set(),
+
+    // player stats
+    combat: 40,
+    speech: 55,
+    intel:  45,
+    fame:   30,
+
+    // NPCs
+    npcs: {
+      nogai: {
+        name: '노가이 칸', role: '킵차크 독립 세력의 칸',
+        avatar: '🐺', rel: 40,
+        bio: '킵차크 칸국의 실세. 명목상 신하이나 사실상 독립 군주처럼 행동한다. 코스탄다이를 도구로 볼지, 동반자로 볼지 아직 결정하지 못했다.',
+        schedule: ['전장 순찰','막사 회의','사냥','사냥','막사 회의']
+      },
+      kostandai_inner: {  // 내면의 목소리 — 플레이어 정체성
+        name: '내면의 목소리', role: '두 정체성 사이에서',
+        avatar: '🌓', rel: 50,
+        bio: '나는 몽골인인가, 비잔티움인인가. 코스탄다이 아나스타시오스는 두 세계 어디에도 완전히 속하지 않는다.',
+        schedule: []
+      },
+      rashid: {
+        name: '라시드 앗 딘', role: '일 칸국 역사가 · 의사',
+        avatar: '📜', rel: 55,
+        bio: '방대한 역사서 편찬을 진행 중인 페르시아 학자. 코스탄다이의 혼혈 정체성에 학문적 관심을 보인다.',
+        schedule: ['저술','저술','시찰','저술','대화']
+      },
+      byzantine: {
+        name: '에우독시아', role: '비잔티움 밀사',
+        avatar: '🕊️', rel: 25,
+        bio: '콘스탄티노폴리스에서 파견된 밀사. 몽골의 서방 정책에 대한 정보를 수집하고 있다. 코스탄다이의 비잔티움 혈통을 이용하려 한다.',
+        schedule: ['정보 수집','은밀한 접촉','정보 수집','기도','은밀한 접촉']
+      },
+      iron_general: {
+        name: '테무르 노얀', role: '카단 울루스 천호장',
+        avatar: '⚔️', rel: 35,
+        bio: '순혈 몽골 전통주의자. 혼혈인 코스탄다이를 경계하지만 그의 언변 능력은 인정한다.',
+        schedule: ['훈련','훈련','순찰','막사 회의','훈련']
+      },
+    },
+
+    // world flags
+    world: {
+      nogaiSuspicion: 0,   // 노가이의 의심 수치
+      byzantineContact: false,
+      rashidFavor: false,
+      unrest: 10,          // 서방 원정군 내 동요
+    },
+
+    // scenario
+    scenarioDay: 0,
+    log: [],
+    gameOver: false,
+  };
+}
+
+// ═══════════════════════════════════════════
+// SCENARIOS — 날짜별 이벤트 시나리오
+// ═══════════════════════════════════════════
+const SCENARIOS = [
+  // Day 0 — 프롤로그
+  {
+    label: '프롤로그',
+    location: '도버 해협 인근, 원정군 막사',
+    avatar: '🌓', name: '코스탄다이 아나스타시오스', role: '나 자신',
+    text: `바람이 서쪽에서 불어온다. <em>짠 냄새가 난다 — 바다 냄새. 어머니가 말해주던 그 바다.</em>\n\n1293년. 나는 노가이 칸의 막사에 있다. 몽골 원정군의 끝자락, 유럽의 끝에서. 내 이름은 코스탄다이 아나스타시오스. 몽골인이기도 하고, 비잔티움인이기도 하며, 사실은 어느 쪽도 아니다.\n\n<span class='byz'>콘스탄티노폴리스는 저 바다 건너에 있다.</span> 그리고 노가이 칸은 내게 그 방향을 가리키며 무언가를 원하고 있다.\n\n오늘 하루, 무엇을 해야 하는가.`,
+    worldState: ['서방 원정 진행 중', '노가이 칸 — 독립 행보', '비잔티움 밀사 잠복'],
+    actions: ['talk_nogai', 'study_rashid', 'scout', 'train', 'rest']
+  },
+  // Day 1
+  {
+    label: '1일차',
+    location: '원정군 막사, 새벽',
+    avatar: '🐺', name: '노가이 칸', role: '킵차크의 실권자',
+    text: `막사 안이 가죽 냄새로 가득하다. 노가이가 지도를 내려다보며 말한다.\n\n"<em>코스탄다이. 너는 두 세계의 말을 안다.</em> 비잔티움 황제에게 전할 말이 있다. 하지만 나는 너를 믿어야 하는지 아직 모른다."\n\n그는 잠시 멈추더니 덧붙인다. <span class='tense'>"네가 어느 쪽 사람인지 — 곧 보이겠지."</span>`,
+    worldState: ['노가이 — 비잔티움 접촉 시도', '원정군 보급 부족 소문', '테무르 노얀 불만 고조'],
+    actions: ['talk_nogai', 'talk_byzantine', 'study_rashid', 'scout', 'train']
+  },
+  // Day 2
+  {
+    label: '2일차',
+    location: '라시드 앗 딘의 천막',
+    avatar: '📜', name: '라시드 앗 딘', role: '역사가 · 의사',
+    text: `학자의 천막은 기이하게도 조용하다. 양피지 냄새.\n\n"<em>코스탄다이 공. 나는 당신 같은 사람을 역사서에 기록하고 싶습니다.</em> 두 문명의 경계에 선 인물. 그런데 한 가지 물어봐도 될까요?"\n\n그가 붓을 내려놓는다. "당신은 지금 누구를 위해 싸우고 있습니까?"`,
+    worldState: ['라시드 — 역사 자료 수집 중', '원정군 내 첩자 활동 감지', '비잔티움 밀사 — 코스탄다이 접근 준비'],
+    actions: ['talk_rashid', 'talk_byzantine', 'talk_nogai', 'scout', 'rest']
+  },
+  // Day 3
+  {
+    label: '3일차',
+    location: '해협 절벽 인근, 황혼',
+    avatar: '🕊️', name: '에우독시아', role: '비잔티움 밀사',
+    text: `여자가 먼저 말을 건다. 그리스어였다.\n\n"<em>아나스타시오스 공. 콘스탄티노폴리스는 당신을 기억합니다.</em>"\n\n나는 그 말이 함정인지, 진심인지 알 수 없었다. 그녀는 계속 말한다. <span class='byz'>"황제 폐하께서는 몽골 원정군의 실제 의도를 알고 싶어 하십니다. 당신만이 알 수 있는 것을요."</span>\n\n<span class='tense'>노가이는 내가 이 여자를 만났다는 것을 이미 알고 있을까?</span>`,
+    worldState: ['비잔티움 — 몽골 내부 정보 요청', '노가이 의심 수치 상승 중', '테무르 노얀 감시망 작동'],
+    actions: ['talk_byzantine', 'talk_nogai', 'scout', 'train', 'study_rashid']
+  },
+  // Day 4
+  {
+    label: '4일차',
+    location: '막사 군사 회의실',
+    avatar: '⚔️', name: '테무르 노얀', role: '천호장',
+    text: `테무르가 나를 노려본다.\n\n"<em>코스탄다이. 네가 어제 해협 근처에서 무엇을 했는지 보고받았다.</em> 노가이 칸은 아직 모른다. 내가 말하기 전에 설명해봐라."\n\n그의 손이 칼자루에 올라가 있다. <span class='tense'>이것은 심문인가, 아니면 협상인가.</span>`,
+    worldState: ['테무르 노얀 — 코스탄다이 감시 중', '원정군 기강 문제 부상', '노가이 결단의 날 임박'],
+    actions: ['talk_iron', 'talk_nogai', 'scout', 'train', 'rest']
+  },
+  // Day 5 — FINAL
+  {
+    label: '결단의 날',
+    location: '노가이 칸의 주막사, 심야',
+    avatar: '🐺', name: '노가이 칸', role: '킵차크의 실권자',
+    text: `노가이가 혼자 앉아 있다. 촛불 하나.\n\n"<em>코스탄다이. 나는 결정했다.</em> 비잔티움에 사절을 보낸다. 그 사절은 너다."\n\n그가 나를 바라본다. 눈빛은 읽기 어렵다. "너는 내 이름으로 가겠지만, 네 혈통으로 설득할 것이다. 만약 네가 나를 배신한다면—"\n\n그는 말을 잇지 않는다. <span class='tense'>침묵이 위협보다 무겁다.</span>\n\n이제 선택의 순간이 왔다.`,
+    worldState: ['결단의 날 — 사절 파견 결정', '원정의 방향이 바뀐다', '코스탄다이의 정체성 시험'],
+    actions: ['accept_mission', 'refuse_mission', 'negotiate_terms']
+  },
+];
+
+// ═══════════════════════════════════════════
+// ACTIONS 정의
+// ═══════════════════════════════════════════
+const ACTIONS = {
+  talk_nogai: {
+    icon: '🐺', name: '노가이 칸과 대화', cost: 1,
+    desc: '칸의 의중을 파악하고 신뢰를 쌓는다',
+    fn: () => {
+      G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 8);
+      G.speech = Math.min(100, G.speech + 2);
+      G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 3);
+      addLog('노가이 칸과 대화. 그의 표정이 조금 부드러워졌다.', false);
+    }
+  },
+  talk_byzantine: {
+    icon: '🕊️', name: '에우독시아와 접촉', cost: 1,
+    desc: '비잔티움 밀사와 비밀리에 만난다',
+    fn: () => {
+      G.npcs.byzantine.rel = Math.min(100, G.npcs.byzantine.rel + 10);
+      G.world.byzantineContact = true;
+      G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 8);
+      G.intel = Math.min(100, G.intel + 3);
+      addLog('에우독시아와 접촉. 비잔티움의 의도를 조금 더 파악했다. 노가이의 의심이 커진다.', true);
+    }
+  },
+  study_rashid: {
+    icon: '📜', name: '라시드와 학문 토론', cost: 1,
+    desc: '역사가의 시각으로 현재 상황을 읽는다',
+    fn: () => {
+      G.npcs.rashid.rel = Math.min(100, G.npcs.rashid.rel + 10);
+      G.world.rashidFavor = true;
+      G.speech = Math.min(100, G.speech + 3);
+      G.fame = Math.min(100, G.fame + 2);
+      addLog('라시드와 토론. 언변이 향상되고 명성이 쌓였다.');
+    }
+  },
+  talk_rashid: {
+    icon: '📜', name: '라시드에게 조언 구하기', cost: 1,
+    desc: '정체성의 혼란을 학자의 관점에서 정리한다',
+    fn: () => {
+      G.npcs.rashid.rel = Math.min(100, G.npcs.rashid.rel + 8);
+      G.fame = Math.min(100, G.fame + 3);
+      G.speech = Math.min(100, G.speech + 2);
+      addLog('라시드에게 조언을 구했다. "두 세계를 아는 자가 역사를 만든다"고 그가 말했다.', false);
+    }
+  },
+  talk_iron: {
+    icon: '⚔️', name: '테무르 노얀을 설득', cost: 1,
+    desc: '의심받고 있는 상황을 언변으로 돌파한다',
+    fn: () => {
+      if (G.speech > 55) {
+        G.npcs.iron_general.rel = Math.min(100, G.npcs.iron_general.rel + 12);
+        G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 5);
+        addLog('테무르를 설득하는 데 성공. 의심이 누그러졌다.', true);
+      } else {
+        G.npcs.iron_general.rel = Math.max(0, G.npcs.iron_general.rel - 5);
+        G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 5);
+        addLog('테무르를 설득하지 못했다. 언변이 더 필요하다.');
+      }
+    }
+  },
+  scout: {
+    icon: '👁️', name: '정보 수집', cost: 1,
+    desc: '원정군 내부와 주변 동향을 살핀다',
+    fn: () => {
+      G.intel = Math.min(100, G.intel + 4);
+      G.world.unrest = Math.max(0, G.world.unrest - 3);
+      addLog('정보 수집 완료. 원정군의 동향을 파악했다.');
+    }
+  },
+  train: {
+    icon: '🗡️', name: '무예 수련', cost: 1,
+    desc: '몽골 전사로서의 기량을 갈고 닦는다',
+    fn: () => {
+      G.combat = Math.min(100, G.combat + 4);
+      G.npcs.iron_general.rel = Math.min(100, G.npcs.iron_general.rel + 5);
+      addLog('수련 완료. 테무르 노얀이 인정하는 눈빛을 보냈다.');
+    }
+  },
+  rest: {
+    icon: '🌙', name: '휴식 및 명상', cost: 1,
+    desc: '두 정체성 사이에서 스스로를 돌아본다',
+    fn: () => {
+      G.fame = Math.min(100, G.fame + 1);
+      G.world.nogaiSuspicion = Math.max(0, G.world.nogaiSuspicion - 2);
+      addLog('고요한 밤. 내가 누구인지를 다시 생각했다.');
+    }
+  },
+  // 최종 선택
+  accept_mission: {
+    icon: '🌍', name: '사절직을 수락한다', cost: 3,
+    desc: '노가이의 이름으로 비잔티움으로 간다',
+    fn: () => {
+      G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 15);
+      addLog('사절직 수락. 두 세계 사이의 다리가 되기로 했다.', true);
+      endGame('bridge');
+    }
+  },
+  refuse_mission: {
+    icon: '🚫', name: '거절하고 독자 행보를 택한다', cost: 3,
+    desc: '몽골도, 비잔티움도 아닌 나만의 길을 간다',
+    fn: () => {
+      G.world.nogaiSuspicion = Math.min(100, G.world.nogaiSuspicion + 30);
+      addLog('거절. 노가이의 눈빛이 차갑게 굳었다.', true);
+      endGame('alone');
+    }
+  },
+  negotiate_terms: {
+    icon: '⚖️', name: '조건을 협상한다', cost: 2,
+    desc: '언변으로 유리한 조건을 얻어낸다',
+    fn: () => {
+      if (G.speech >= 60) {
+        G.npcs.nogai.rel = Math.min(100, G.npcs.nogai.rel + 8);
+        G.fame = Math.min(100, G.fame + 10);
+        addLog('협상 성공. 나만의 조건으로 사절이 되었다.', true);
+        endGame('diplomat');
+      } else {
+        G.npcs.nogai.rel = Math.max(0, G.npcs.nogai.rel - 10);
+        addLog('협상 실패. 언변이 부족했다. 노가이가 냉담해졌다.');
+        endGame('failed');
+      }
+    }
+  }
+};
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+function renderDate() {
+  const seasons = ['봄','봄','봄','여름','여름','여름','가을','가을','가을','겨울','겨울','겨울'];
+  G.season = seasons[G.month - 1];
+  document.getElementById('dateVal').textContent = `${G.year}년 ${G.season}, ${G.month}월 ${G.day}일`;
+}
+
+function renderAP() {
+  for (let i = 0; i < G.apMax; i++) {
+    const dot = document.getElementById(`ap${i}`);
+    dot.classList.toggle('used', i >= G.ap);
+  }
+}
+
+function renderStats() {
+  const stats = ['combat','speech','intel','fame'];
+  stats.forEach(s => {
+    const v = G[s];
+    document.getElementById(`s-${s}`).textContent = v;
+    const pipRow = document.getElementById(`pip-${s}`);
+    pipRow.innerHTML = '';
+    const total = 10;
+    const filled = Math.round(v / 10);
+    for (let i = 0; i < total; i++) {
+      const pip = document.createElement('div');
+      pip.className = 'pip' + (i >= filled ? ' empty' : '');
+      pipRow.appendChild(pip);
+    }
+  });
+}
+
+function renderNPCs() {
+  const row = document.getElementById('npcRow');
+  row.innerHTML = '';
+  for (const [key, npc] of Object.entries(G.npcs)) {
+    const rel = npc.rel;
+    const cls = rel >= 65 ? 'positive' : rel <= 30 ? 'negative' : '';
+    const relLabel = rel >= 65 ? `우호(${rel})` : rel <= 30 ? `경계(${rel})` : `중립(${rel})`;
+    const chip = document.createElement('div');
+    chip.className = `npc-chip ${cls}`;
+    chip.innerHTML = `<div class="npc-avatar">${npc.avatar}</div><div class="npc-info"><span class="npc-name">${npc.name}</span><span class="npc-rel">${relLabel}</span></div>`;
+    chip.onclick = () => showNpcPopup(key);
+    row.appendChild(chip);
+  }
+}
+
+function renderScenario() {
+  const idx = Math.min(G.scenarioDay, SCENARIOS.length - 1);
+  const sc = SCENARIOS[idx];
+  document.getElementById('sceneLabel').textContent = sc.label;
+  document.getElementById('sceneLocation').textContent = sc.location;
+  document.getElementById('speakerAvatar').textContent = sc.avatar;
+  document.getElementById('speakerName').textContent = sc.name;
+  document.getElementById('speakerRole').textContent = sc.role;
+  document.getElementById('journalBody').innerHTML = sc.text.replace(/\n/g, '<br>');
+
+  // world ticker
+  const ticker = document.getElementById('worldTicker');
+  ticker.innerHTML = sc.worldState.map((w,i) =>
+    `<span class="ticker-item${i===0?' active':''}">${w}</span>`
+  ).join('');
+
+  // actions
+  renderActions(sc.actions);
+
+  const j = document.getElementById('journal');
+  j.classList.remove('flash');
+  void j.offsetWidth;
+  j.classList.add('flash');
+}
+
+function renderActions(actionKeys) {
+  const list = document.getElementById('actionList');
+  list.innerHTML = '';
+  actionKeys.forEach(key => {
+    const a = ACTIONS[key];
+    if (!a) return;
+    const btn = document.createElement('button');
+    btn.className = 'action-btn' + (G.usedActions.has(key) ? ' used-today' : '') + (G.ap < a.cost ? ' spent' : '');
+    btn.innerHTML = `
+      <span class="action-icon">${a.icon}</span>
+      <span class="action-content">
+        <span class="action-name">${a.name}</span>
+        <span class="action-desc">${a.desc}</span>
+      </span>
+      <span class="action-cost">${'<div class="cost-dot"></div>'.repeat(a.cost)}</span>
+    `;
+    btn.onclick = () => doAction(key);
+    list.appendChild(btn);
+  });
+}
+
+// ═══════════════════════════════════════════
+// ACTIONS
+// ═══════════════════════════════════════════
+function doAction(key) {
+  if (G.gameOver) return;
+  const a = ACTIONS[key];
+  if (!a || G.ap < a.cost || G.usedActions.has(key)) return;
+
+  G.ap -= a.cost;
+  G.usedActions.add(key);
+  a.fn();
+
+  renderAP();
+  renderStats();
+  renderNPCs();
+
+  // re-render action list with current ap
+  const idx = Math.min(G.scenarioDay, SCENARIOS.length - 1);
+  renderActions(SCENARIOS[idx].actions);
+
+  // check ap exhausted → auto next day prompt
+  if (G.ap <= 0) {
+    document.getElementById('nextDayBtn').style.boxShadow = '0 0 10px rgba(196,135,58,0.5)';
+  }
+
+  checkWorldEvents();
+}
+
+function nextDay() {
+  if (G.gameOver) return;
+  // advance time
+  G.day++;
+  G.totalDays++;
+  if (G.day > 30) { G.day = 1; G.month++; }
+  if (G.month > 12) { G.month = 1; G.year++; }
+
+  G.ap = G.apMax;
+  G.usedActions.clear();
+  document.getElementById('nextDayBtn').style.boxShadow = '';
+
+  // NPC schedules
+  for (const npc of Object.values(G.npcs)) {
+    if (npc.schedule && npc.schedule.length > 0) {
+      const activity = npc.schedule[G.totalDays % npc.schedule.length];
+      // passive rel drift
+      if (activity === '대화' || activity === '막사 회의') npc.rel = Math.min(100, npc.rel + 1);
+    }
+  }
+
+  // advance scenario
+  if (G.scenarioDay < SCENARIOS.length - 1) G.scenarioDay++;
+
+  G.world.unrest = Math.min(100, G.world.unrest + 2);
+
+  renderDate();
+  renderAP();
+  renderStats();
+  renderNPCs();
+  renderScenario();
+}
+
+// ═══════════════════════════════════════════
+// WORLD EVENTS
+// ═══════════════════════════════════════════
+function checkWorldEvents() {
+  if (G.world.nogaiSuspicion >= 60 && G.scenarioDay < 5) {
+    addLog('⚠️ 노가이의 의심이 위험 수위에 달했다. 다음 대화가 중요하다.', true);
+  }
+  if (G.world.unrest >= 50) {
+    addLog('⚠️ 원정군 내 동요가 심각해지고 있다.', true);
+  }
+}
+
+// ═══════════════════════════════════════════
+// NPC POPUP
+// ═══════════════════════════════════════════
+function showNpcPopup(key) {
+  const npc = G.npcs[key];
+  document.getElementById('popupAvatar').textContent = npc.avatar;
+  document.getElementById('popupName').textContent = npc.name;
+  document.getElementById('popupRole').textContent = npc.role;
+  document.getElementById('popupBio').textContent = npc.bio;
+  const fill = document.getElementById('popupRelFill');
+  fill.style.width = npc.rel + '%';
+  const rel = npc.rel;
+  fill.style.background = rel >= 65 ? 'linear-gradient(90deg,#1a6b2a,#2ea043)' :
+                           rel <= 30 ? 'linear-gradient(90deg,#6b1010,#c0392b)' :
+                           'linear-gradient(90deg,var(--steppe-dark),var(--steppe))';
+  document.getElementById('npcPopup').classList.add('show');
+}
+function closeNpcPopup(e) {
+  if (!e || e.target === document.getElementById('npcPopup')) {
+    document.getElementById('npcPopup').classList.remove('show');
+  }
+}
+
+// ═══════════════════════════════════════════
+// LOG
+// ═══════════════════════════════════════════
+function addLog(text, imp = false) {
+  G.log.unshift({ text, imp });
+  if (G.log.length > 8) G.log.pop();
+  const ll = document.getElementById('logList');
+  ll.innerHTML = G.log.map(e =>
+    `<div class="log-entry${e.imp?' imp':''}">${e.text}</div>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════════
+// END GAME
+// ═══════════════════════════════════════════
+const ENDINGS = {
+  bridge: {
+    icon: '🌉', title: '두 세계의 다리',
+    body: (g) => `코스탄다이 아나스타시오스는 노가이의 사절로 콘스탄티노폴리스에 발을 디딘다. 몽골인의 피와 비잔티움인의 이름을 동시에 지닌 그는, 어느 한쪽이 아닌 두 세계 모두에게 필요한 사람이 되었다.\n\n명성: ${g.fame} / 언변: ${g.speech}`
+  },
+  alone: {
+    icon: '🐺', title: '차간 치노드 — 혼자인 늑대',
+    body: (g) => `그는 노가이도, 비잔티움도 선택하지 않았다. 원정군을 떠나 스스로의 길을 간다. 그 길이 어디로 이어지는지는 아무도 모른다.\n\n위험하지만, 자유롭다.\n\n첩보: ${g.intel} / 무력: ${g.combat}`
+  },
+  diplomat: {
+    icon: '⚖️', title: '코스탄다이 조약',
+    body: (g) => `협상 능력으로 노가이에게서 전례 없는 자율권을 얻어냈다. 사절이 되되, 독립적인 판단을 보장받는 조건으로. 이 협상은 훗날 역사가 라시드 앗 딘의 기록에 남는다.\n\n명성: ${g.fame} / 언변: ${g.speech}`
+  },
+  failed: {
+    icon: '💀', title: '실패한 협상',
+    body: (g) => `언변이 부족했다. 노가이는 코스탄다이를 더 이상 신뢰하지 않기로 했다. 그는 원정군 내 감시 아래 놓이게 되었다.\n\n언변: ${g.speech} — 좀 더 높았어야 했다.`
+  },
+};
+
+function endGame(type) {
+  G.gameOver = true;
+  const e = ENDINGS[type];
+  document.getElementById('outIcon').textContent = e.icon;
+  document.getElementById('outTitle').textContent = e.title;
+  document.getElementById('outBody').textContent = e.body(G);
+  document.getElementById('outcomeOverlay').classList.add('show');
+}
+
+function restart() {
+  document.getElementById('outcomeOverlay').classList.remove('show');
+  document.getElementById('logList').innerHTML = '';
+  initGame();
+  renderDate();
+  renderAP();
+  renderStats();
+  renderNPCs();
+  renderScenario();
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+initGame();
+renderDate();
+renderAP();
+renderStats();
+renderNPCs();
+renderScenario();
+addLog('1293년 봄. 원정은 시작되었다.', true);
+</script>
+</body>
+</html>
